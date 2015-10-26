@@ -47,7 +47,7 @@ namespace FastSms {
 			var messageStatus = HttpClientHelper.GetResponse( requestUrl );
 
 			if ( Constants.ErrorList.Keys.Contains( messageStatus ) ) {
-				throw new ApiException();
+				throw new ApiException( messageStatus );
 			}
 
 			return messageStatus;
@@ -64,7 +64,7 @@ namespace FastSms {
 			var result = HttpClientHelper.GetResponse( requestUrl );
 
 			if ( Convert.ToInt32( result ) != 1 ) {
-				throw new ApiException();
+				throw new ApiException( result );
 			}
 		}
 
@@ -77,7 +77,7 @@ namespace FastSms {
 			var result = HttpClientHelper.GetResponse( requestUrl );
 
 			if ( Convert.ToInt32( result ) != 1 ) {
-				throw new ApiException();
+				throw new ApiException( result );
 			}
 		}
 
@@ -90,7 +90,7 @@ namespace FastSms {
 			var result = HttpClientHelper.GetResponse( requestUrl );
 
 			if ( Convert.ToInt32( result ) != 1 ) {
-				throw new ApiException();
+				throw new ApiException( result );
 			}
 		}
 
@@ -104,7 +104,7 @@ namespace FastSms {
 			var result = HttpClientHelper.GetResponse( requestUrl );
 
 			if ( Convert.ToInt32( result ) != 1 ) {
-				throw new ApiException();
+				throw new ApiException( result );
 			}
 		}
 
@@ -118,7 +118,7 @@ namespace FastSms {
 			var result = HttpClientHelper.GetResponse( requestUrl );
 
 			if ( Convert.ToInt32( result ) != 1 ) {
-				throw new ApiException();
+				throw new ApiException( result );
 			}
 		}
 
@@ -135,7 +135,7 @@ namespace FastSms {
 			var result = HttpClientHelper.GetResponse( requestUrl );
 
 			if ( Convert.ToInt32( result ) != 1 ) {
-				throw new ApiException();
+				throw new ApiException( result );
 			}
 		}
 
@@ -154,7 +154,7 @@ namespace FastSms {
 			var messageId = HttpClientHelper.GetResponse( requestUrl );
 
 			if ( Constants.ErrorList.Keys.Contains( messageId ) ) {
-				throw new ApiException();
+				throw new ApiException( messageId );
 			}
 
 			return messageId;
@@ -174,7 +174,7 @@ namespace FastSms {
 			var result = HttpClientHelper.GetResponse( requestUrl );
 
 			if ( Convert.ToInt32( result ) < 1 ) {
-				throw new ApiException();
+				throw new ApiException( result );
 			}
 		}
 
@@ -192,7 +192,7 @@ namespace FastSms {
 			var result = HttpClientHelper.GetResponse( requestUrl );
 
 			if ( Convert.ToInt32( result ) < 1 ) {
-				throw new ApiException();
+				throw new ApiException( result );
 			}
 		}
 
@@ -210,5 +210,5 @@ namespace FastSms {
 
 			return lisOfMessages;
 		}
-   }
+	}
 }
