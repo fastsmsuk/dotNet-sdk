@@ -1,9 +1,6 @@
-﻿using FastSms;
-using FastSms.Models;
-
-namespace TestApp {
+﻿namespace TestApp {
 	public class Program {
-		public static void Main ( string[] args ) {
+		public static void Main () {
 		}
 	}
 }

@@ -238,7 +238,7 @@ namespace FastSms {
 		/// <param name="overwriteDupesOne">Ignore dupes</param>
 		/// <param name="overwriteDupesTwo">Overwrite duplicate number</param>
 		/// <returns>Result of import.</returns>
-		public List<string> ImportContactsCsv ( List<ContactsCSVModel> contacts, string ignoreDupes, string overwriteDupesOne, string overwriteDupesTwo ) {
+		public List<string> ImportContactsCsv ( List<ContactsCSVModel> contacts, int ignoreDupes = 0, int overwriteDupesOne = 0, int overwriteDupesTwo = 0 ) {
 			var result = new List<string>();
 			foreach ( var contact in contacts ) {
 				var urlForGroups = string.Empty;
@@ -279,9 +279,13 @@ namespace FastSms {
 
 			var response = HttpClientHelper.GetResponse( requestUrl );
 
-			var lisOfMessages = JsonConvert.DeserializeObject<List<MessageModel>>( response );
-
-			return lisOfMessages;
+			try {
+				var lisOfMessages = JsonConvert.DeserializeObject<List<MessageModel>>( response );
+				return lisOfMessages;
+			} catch ( Exception ) {
+				var error = JsonConvert.DeserializeObject<ErrorMessageModel>( response );
+				throw new ApiException( error.Number );
+			}
 		}
 	}
 }

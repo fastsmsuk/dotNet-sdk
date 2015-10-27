@@ -17,7 +17,7 @@ namespace FastSms.Common {
 				var inboundReport = new InboundMessagesReportModel();
 				var currentList = responseList[index].Split( ',' );
 				if ( !string.IsNullOrEmpty( responseList[index] ) ) {
-					inboundReport.MessageID = currentList[0].Replace( "\"", string.Empty );
+					inboundReport.MessageId = currentList[0].Replace( "\"", string.Empty );
 					inboundReport.From = currentList[1].Replace( "\"", string.Empty );
 					inboundReport.Number = currentList[2].Replace( "\"", string.Empty );
 					inboundReport.Message = currentList[3].Replace( "\"", string.Empty );
@@ -67,7 +67,7 @@ namespace FastSms.Common {
 				var outboxReport = new OutboxReportModel();
 				var currentList = responseList[index].Split( ',' );
 				if ( !string.IsNullOrEmpty( responseList[index] ) ) {
-					outboxReport.MessageID = currentList[0].Replace( "\"", string.Empty );
+					outboxReport.MessageId = currentList[0].Replace( "\"", string.Empty );
 					outboxReport.Username = currentList[1].Replace( "\"", string.Empty );
 					outboxReport.Destination = currentList[2].Replace( "\"", string.Empty );
 					outboxReport.Status = currentList[3].Replace( "\"", string.Empty );
@@ -96,7 +96,7 @@ namespace FastSms.Common {
 				var messageReport = new MessageReportModel();
 				var currentList = responseList[index].Split( ',' );
 				if ( !string.IsNullOrEmpty( responseList[index] ) ) {
-					messageReport.MessageID = currentList[0].Replace( "\"", string.Empty );
+					messageReport.MessageId = currentList[0].Replace( "\"", string.Empty );
 					messageReport.Username = currentList[1].Replace( "\"", string.Empty );
 					messageReport.Destination = currentList[2].Replace( "\"", string.Empty );
 					messageReport.Source = currentList[3].Replace( "\"", string.Empty );
