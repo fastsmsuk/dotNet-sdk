@@ -49,6 +49,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\HttpClientHelper.cs" />
+    <Compile Include="Common\ReportHelper.cs" />
     <Compile Include="Common\ReportType.cs" />
     <Compile Include="Exceptions\ApiException.cs" />
     <Compile Include="Models\ContactsCSVModel.cs" />

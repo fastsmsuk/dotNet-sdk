@@ -5,8 +5,6 @@ using System.Linq;
 using FastSms.Common;
 using FastSms.Exceptions;
 using FastSms.Models;
-using System.Collections.Generic;
-using System.Linq;
 using Newtonsoft.Json;
 
 namespace FastSms {
@@ -25,9 +23,8 @@ namespace FastSms {
 		///    Checks current credit balance.
 		/// </summary>
 		/// <returns>Credit balance.</returns>
-        public double CheckCredits()
-        {
-            var requestUrl = string.Format("{0}{1}&Action=CheckCredits", Constants.ApiUrl, _token);
+		public double CheckCredits () {
+			var requestUrl = string.Format( "{0}{1}&Action=CheckCredits", Constants.ApiUrl, _token );
 
 			var response = HttpClientHelper.GetResponse( requestUrl );
 
@@ -35,7 +32,7 @@ namespace FastSms {
 
 			if ( credits <= 0 ) {
 				throw new ApiException( response );
-		}
+			}
 			return credits;
 		}
 
@@ -197,195 +194,80 @@ namespace FastSms {
 			if ( Convert.ToInt32( result ) < 1 ) {
 				throw new ApiException( result );
 			}
+		}
+
+		/// <summary>
+		///    Gets report.
+		/// </summary>
+		/// <param name="reportType">Report type</param>
+		/// <param name="dateFrom">Date from</param>
+		/// <param name="dateTo">Date to</param>
+		/// <returns>List of messages in report.</returns>
+		public List<ReportModel> GetReports ( ReportType reportType, string dateFrom, string dateTo ) {
+			var requestUrl = string.Format( "{0}{1}&Action=Report&ReportType={2}&From={3}&To={4}", Constants.ApiUrl, _token, reportType,
+				dateFrom, dateTo );
+
+			var response = HttpClientHelper.GetResponse( requestUrl );
+
+			int error;
+			var hasError = int.TryParse( response, out error );
+
+			if ( hasError && error < 1 ) {
+				throw new ApiException( response );
 			}
-        }
 
-        public List<ReportModel> GetReports(ReportType reportType, string dateFrom, string dateTo)
-        {
-            var requestUrl = string.Format("{0}{1}&Action=Report&ReportType={2}&From={3}&To={4}", Constants.ApiUrl, _token, reportType.ToString(),
-                dateFrom, dateTo);
+			switch ( reportType ) {
+				case ReportType.Messages:
+					return ReportHelper.GetMessageReport( response );
+				case ReportType.Outbox:
+					return ReportHelper.GetOuboxReport( response );
+				case ReportType.InboundMessages:
+					return ReportHelper.GetInboundReport( response );
+				case ReportType.Usage:
+					return ReportHelper.GetUsageReport( response );
+				default:
+					throw new ApiException( response );
+			}
+		}
 
+		/// <summary>
+		///    Imports contacts in the address book.
+		/// </summary>
+		/// <param name="contacts">Contact list</param>
+		/// <param name="ignoreDupes">Allow duplicate contacts</param>
+		/// <param name="overwriteDupesOne">Ignore dupes</param>
+		/// <param name="overwriteDupesTwo">Overwrite duplicate number</param>
+		/// <returns>Result of import.</returns>
+		public List<string> ImportContactsCsv ( List<ContactsCSVModel> contacts, string ignoreDupes, string overwriteDupesOne, string overwriteDupesTwo ) {
+			var result = new List<string>();
+			foreach ( var contact in contacts ) {
+				var urlForGroups = string.Empty;
 
-            var response = HttpClientHelper.GetResponse(requestUrl);
+				if ( !string.IsNullOrEmpty( contact.Group1 ) ) {
+					urlForGroups = string.Format( ",{0}", contact.Group1 );
+				}
+				if ( !string.IsNullOrEmpty( contact.Group2 ) ) {
+					urlForGroups = string.Format( "{0},{1}", urlForGroups, contact.Group2 );
+				}
+				if ( !string.IsNullOrEmpty( contact.Group3 ) ) {
+					urlForGroups = string.Format( "{0},{1}", urlForGroups, contact.Group3 );
+				}
 
-            int error;
-            bool hasError = int.TryParse(response, out error);
+				var requestUrl = string.Format( "{0}{1}&Action=ImportContactsCSV&ContactsCSV={2},{3},{4}{5}&IgnoreDupes={6}&OverwriteDupes={7}&OverwriteDupes={8}",
+					Constants.ApiUrl, _token, contact.Name, contact.Number, contact.Email, urlForGroups, ignoreDupes, overwriteDupesOne, overwriteDupesTwo );
 
-            if (hasError)
-            {
-                if (error < 1)
-                {
-                    throw new ApiException(response);
-                }
-            }
+				var response = HttpClientHelper.GetResponse( requestUrl );
 
-            switch (reportType)
-            {
-                case ReportType.Messages: return MessageReport(response);
-                case ReportType.Outbox: return OuboxReport(response);
-                case ReportType.InboundMessages: return InboundReport(response);
-                case ReportType.Usage: return UsageReport(response);
-                default: throw new ApiException(response);
-            }
-        }
+				int error;
+				var hasError = int.TryParse( response, out error );
+				if ( hasError && error < 1 ) {
+					throw new ApiException( response );
+				}
 
-        public List<string> ImportContactsCSV(List<ContactsCSVModel> contacts, string ignoreDupes = "", string overwriteDupesOne = "", string overwriteDupesTwo = "")
-        {
-            List<string> result = new List<string>();
-            foreach (var model in contacts)
-            {
-                string requestUrl = "";
-                var currUrl = string.Format("{0}{1}&Action=ImportContactsCSV&ContactsCSV={2},{3},{4}", Constants.ApiUrl, _token, model.Name, model.Number, model.Email);
-                if (!String.IsNullOrEmpty(model.Group1))
-                {
-                    requestUrl = string.Format("{0},{1}", currUrl, model.Group1);
-                    currUrl = requestUrl;
-                }
-                if (!string.IsNullOrEmpty(model.Group2))
-                {
-                    requestUrl = string.Format("{0},{1}", currUrl, model.Group2);
-                    currUrl = requestUrl;
-                }
-                if (!string.IsNullOrEmpty(model.Group3))
-                {
-                    requestUrl = string.Format("{0},{1}", currUrl, model.Group3);
-                    currUrl = requestUrl;
-                }
-                if (!string.IsNullOrEmpty(ignoreDupes))
-                {
-                    requestUrl = string.Format("{0}&IgnoreDupes={1}", currUrl, ignoreDupes);
-                    currUrl = requestUrl;
-                }
-                if (!string.IsNullOrEmpty(overwriteDupesOne))
-                {
-                    requestUrl = string.Format("{0}&OverwriteDupes={1}", currUrl, overwriteDupesOne);
-                    currUrl = requestUrl;
-                }
-                if (!string.IsNullOrEmpty(overwriteDupesTwo))
-                {
-                    requestUrl = string.Format("{0}OverwriteDupes={1}", currUrl, overwriteDupesTwo);
-                    currUrl = requestUrl;
-                }
-                var response = HttpClientHelper.GetResponse(requestUrl);
-                int error;
-
-                bool hasError = int.TryParse(response, out error);
-                if (hasError)
-                {
-                    if (error < 1)
-                    {
-                        throw new ApiException(response);
-                    }
-                }
-
-                result.Add(response.Split(':')[1].Replace("\n", string.Empty));
-
-            }
-            return result;
-
-        }
-
-
-        private List<ReportModel> MessageReport(string response)
-        {
-            var responseList = response.Split('\n');
-
-            List<ReportModel> reportResult = new List<ReportModel>();
-
-
-            for (int i = 1; i < responseList.Length; i++)
-            {
-                MessageReportModel messageReport = new MessageReportModel();
-                string[] currentList = responseList[i].Split(',');
-                if (responseList[i] != "")
-                {
-                    messageReport.MessageID = currentList[0].Replace("\"", string.Empty);
-                    messageReport.Username = currentList[1].Replace("\"", string.Empty);
-                    messageReport.Destination = currentList[2].Replace("\"", string.Empty);
-                    messageReport.Source = currentList[3].Replace("\"", string.Empty);
-                    messageReport.Status = currentList[4].Replace("\"", string.Empty);
-                    messageReport.ScheduleDate = currentList[5].Replace("\"", string.Empty);
-                    messageReport.SentDate = currentList[6].Replace("\"", string.Empty);
-                    messageReport.DeliveryDate = currentList[7].Replace("\"", string.Empty);
-                    reportResult.Add(messageReport);
-                }
-            }
-            return reportResult;
-        }
-
-        private List<ReportModel> OuboxReport(string response)
-        {
-            var responseList = response.Split('\n');
-
-            List<ReportModel> reportResult = new List<ReportModel>();
-
-            for (int i = 1; i < responseList.Length; i++)
-            {
-                OutboxReportModel outboxReport = new OutboxReportModel();
-                string[] currentList = responseList[i].Split(',');
-                if (responseList[i] != "")
-                {
-                    outboxReport.MessageID = currentList[0].Replace("\"", string.Empty);
-                    outboxReport.Username = currentList[1].Replace("\"", string.Empty);
-                    outboxReport.Destination = currentList[2].Replace("\"", string.Empty);
-                    outboxReport.Status = currentList[3].Replace("\"", string.Empty);
-                    outboxReport.ScheduleDate = currentList[4].Replace("\"", string.Empty);
-                    outboxReport.SentDate = currentList[5].Replace("\"", string.Empty);
-                    outboxReport.DeliveryDate = currentList[6].Replace("\"", string.Empty);
-
-                    reportResult.Add(outboxReport);
-                }
-            }
-
-            return reportResult;
-        }
-
-        private List<ReportModel> UsageReport(string response)
-        {
-            var responseList = response.Split('\n');
-
-            List<ReportModel> reportResult = new List<ReportModel>();
-
-
-            for (int i = 1; i < responseList.Length; i++)
-            {
-                UsageReportModel usageReport = new UsageReportModel();
-                string[] currentList = responseList[i].Split(',');
-                if (responseList[i] != "")
-                {
-                    usageReport.Status = currentList[0].Replace("\"", string.Empty);
-                    usageReport.Messages = currentList[1].Replace("\"", string.Empty);
-
-                    reportResult.Add(usageReport);
-                }
-            }
-            return reportResult;
-        }
-
-        private List<ReportModel> InboundReport(string response)
-        {
-            var responseList = response.Split('\n');
-
-            List<ReportModel> reportResult = new List<ReportModel>();
-
-
-            for (int i = 1; i < responseList.Length; i++)
-            {
-                InboundMessagesReportModel inboundReport = new InboundMessagesReportModel();
-                string[] currentList = responseList[i].Split(',');
-                if (responseList[i] != "")
-                {
-                    inboundReport.MessageID = currentList[0].Replace("\"", string.Empty);
-                    inboundReport.From = currentList[1].Replace("\"", string.Empty);
-                    inboundReport.Number = currentList[2].Replace("\"", string.Empty);
-                    inboundReport.Message = currentList[3].Replace("\"", string.Empty);
-                    inboundReport.ReceivedDate = currentList[4].Replace("\"", string.Empty);
-                    inboundReport.Status = currentList[5].Replace("\"", string.Empty);
-
-                    reportResult.Add(inboundReport);
-                }
-            }
-            return reportResult;
+				result.Add( response.Replace( "\n", string.Empty ) );
+			}
+			return result;
+		}
 
 		/// <summary>
 		///    Gets background messages.
