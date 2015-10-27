@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -49,7 +53,12 @@
     <Compile Include="Exceptions\ApiException.cs" />
     <Compile Include="Models\ContactsCSVModel.cs" />
     <Compile Include="Models\InboundMessagesReportModel.cs" />
+    <Compile Include="Models\ErrorMessageModel.cs" />
     <Compile Include="Models\MessageModel.cs" />
+    <Compile Include="Models\MessageToGroupModel.cs" />
+    <Compile Include="Models\MessageToListModel.cs" />
+    <Compile Include="Models\MessageToSendModel.cs" />
+    <Compile Include="Models\MessageToUserModel.cs" />
     <Compile Include="Models\MessageReportModel.cs" />
     <Compile Include="Models\OutboxReportModel.cs" />
     <Compile Include="Models\ReportModel.cs" />
@@ -58,9 +67,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
