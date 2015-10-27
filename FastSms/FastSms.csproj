@@ -45,13 +45,22 @@
     <Compile Include="Client.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\HttpClientHelper.cs" />
+    <Compile Include="Common\ReportType.cs" />
     <Compile Include="Exceptions\ApiException.cs" />
+    <Compile Include="Models\ContactsCSVModel.cs" />
+    <Compile Include="Models\InboundMessagesReportModel.cs" />
     <Compile Include="Models\MessageModel.cs" />
+    <Compile Include="Models\MessageReportModel.cs" />
+    <Compile Include="Models\OutboxReportModel.cs" />
+    <Compile Include="Models\ReportModel.cs" />
+    <Compile Include="Models\UsageReportModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
