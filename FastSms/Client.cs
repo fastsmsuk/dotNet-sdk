@@ -276,7 +276,10 @@ namespace FastSms {
 					throw new ApiException( response );
 				}
 				var resultStatus = response.Split( '\n' )[0].Split( ':' )[1].Replace( "\n", string.Empty ).Replace( " ", string.Empty );
-				resultList.Add( new ImportStatusModel( iterator++, resultStatus ) );
+				resultList.Add( new ImportStatusModel {
+					Number = iterator++,
+					Status = resultStatus
+				} );
 			}
 			return resultList;
 		}
