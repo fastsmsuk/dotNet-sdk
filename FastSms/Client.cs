@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Globalization;
 using System.Linq;
 using FastSms.Common;
 using FastSms.Exceptions;
@@ -26,9 +27,10 @@ namespace FastSms {
 		public double CheckCredits () {
 			var requestUrl = string.Format( "{0}{1}&Action=CheckCredits", Constants.ApiUrl, _token );
 
-			var response = HttpClientHelper.GetResponse( requestUrl );
+			var response = HttpClientHelper.GetResponse( requestUrl ).Replace( ",", "." );
 
-			var credits = Convert.ToDouble( response );
+			double credits;
+			double.TryParse( response, NumberStyles.Any, CultureInfo.InvariantCulture, out credits );
 
 			if ( credits <= 0 ) {
 				throw new ApiException( response );
@@ -215,19 +217,28 @@ namespace FastSms {
 			if ( hasError && error < 1 ) {
 				throw new ApiException( response );
 			}
-
+			List<ReportModel> resultList;
 			switch ( reportType ) {
-				case ReportType.Messages:
-					return ReportHelper.GetMessageReport( response );
-				case ReportType.Outbox:
-					return ReportHelper.GetOuboxReport( response );
-				case ReportType.InboundMessages:
-					return ReportHelper.GetInboundReport( response );
-				case ReportType.Usage:
-					return ReportHelper.GetUsageReport( response );
+				case ReportType.Messages: {
+					resultList = ReportHelper.GetMessageReport( response );
+					break;
+				}			
+				case ReportType.Outbox: {
+					resultList = ReportHelper.GetOuboxReport( response );
+					break;
+				}
+				case ReportType.InboundMessages: {
+					resultList = ReportHelper.GetInboundReport( response );
+					break;
+				}
+				case ReportType.Usage: {
+					resultList = ReportHelper.GetUsageReport( response );
+					break;
+				}
 				default:
-					throw new ApiException( response );
+					throw new ApiException( response );	
 			}
+			return resultList;
 		}
 
 		/// <summary>
@@ -238,8 +249,9 @@ namespace FastSms {
 		/// <param name="overwriteDupesOne">Ignore dupes</param>
 		/// <param name="overwriteDupesTwo">Overwrite duplicate number</param>
 		/// <returns>Result of import.</returns>
-		public List<string> ImportContactsCsv ( List<ContactsCSVModel> contacts, int ignoreDupes = 0, int overwriteDupesOne = 0, int overwriteDupesTwo = 0 ) {
-			var result = new List<string>();
+		public List<ImportStatusModel> ImportContactsCsv ( List<ContactsCSVModel> contacts, int ignoreDupes = 0, int overwriteDupesOne = 0, int overwriteDupesTwo = 0 ) {
+			var resultList = new List<ImportStatusModel>();
+			var iterator = 1;
 			foreach ( var contact in contacts ) {
 				var urlForGroups = string.Empty;
 
@@ -263,10 +275,10 @@ namespace FastSms {
 				if ( hasError && error < 1 ) {
 					throw new ApiException( response );
 				}
-
-				result.Add( response.Replace( "\n", string.Empty ) );
+				var resultStatus = response.Split( '\n' )[0].Split( ':' )[1].Replace( "\n", string.Empty ).Replace( " ", string.Empty );
+				resultList.Add( new ImportStatusModel( iterator++, resultStatus ) );
 			}
-			return result;
+			return resultList;
 		}
 
 		/// <summary>

@@ -53,6 +53,7 @@
     <Compile Include="Common\ReportType.cs" />
     <Compile Include="Exceptions\ApiException.cs" />
     <Compile Include="Models\ContactsCSVModel.cs" />
+    <Compile Include="Models\ImportStatusModel.cs" />
     <Compile Include="Models\InboundMessagesReportModel.cs" />
     <Compile Include="Models\ErrorMessageModel.cs" />
     <Compile Include="Models\MessageModel.cs" />
