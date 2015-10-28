@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FastSms.Tests {
 	[TestClass]
-	public class UnitTest1 {
+	public class UnitTest {
 		public Client Client;
 		public List<ContactsCSVModel> ContactModelList;
 		public List<ImportStatusModel> ImportContactsCsvResults;
@@ -118,12 +118,12 @@ namespace FastSms.Tests {
 
 		[TestMethod]
 		public void CheckImportContactsCsvDuplicateName () {
-			Assert.AreEqual( "Duplicate Name", ImportContactsCsvResults[6].Status );
+			Assert.AreEqual( "DuplicateName", ImportContactsCsvResults[6].Status );
 		}
 
 		[TestMethod]
 		public void CheckImportContactsCsvDuplicateNumber () {
-			Assert.AreEqual( "Duplicate Number", ImportContactsCsvResults[7].Status );
+			Assert.AreEqual( "DuplicateNumber", ImportContactsCsvResults[7].Status );
 		}
 
 		[TestMethod]
@@ -299,5 +299,58 @@ namespace FastSms.Tests {
 			UserModel.Credits = -1;
 			Client.CreateUser( UserModel );
 		}
+
+		[TestMethod]
+		[ExpectedException ( typeof ( ApiException ) )]
+		public void CheckSendMessageToGroupBadToken () {
+			var client = new Client( "bad token" );
+			client.SendMessage( new MessageToGroupModel() );
+		}
+
+		[TestMethod]
+		[ExpectedException ( typeof ( ApiException ) )]
+		public void CheckSendMessageToGroupBadModelState () {
+			var client = new Client();
+			client.SendMessage( new MessageToGroupModel {
+				GroupName = "bad group name",
+				SourceAddress = "bad source",
+				Body = "some text"
+			} );
+		}
+
+		[TestMethod]
+		[ExpectedException ( typeof ( ApiException ) )]
+		public void CheckSendMessageToListBadToken () {
+			var client = new Client( "bad token" );
+			client.SendMessage( new MessageToListModel() );
+		}
+
+		[TestMethod]
+		[ExpectedException ( typeof ( ApiException ) )]
+		public void CheckSendMessageToListBadModelState () {
+			var client = new Client();
+			client.SendMessage( new MessageToListModel {
+				ListName = "Bad list name",
+				Body = "body",
+				SourceAddress = ""
+			} );
+		}
+
+		[TestMethod]
+		[ExpectedException ( typeof ( ApiException ) )]
+		public void CheckSendMessageToUserBadToken () {
+			var client = new Client( "bad token" );
+			client.SendMessage( new MessageToUserModel() );
+		}
+
+		[TestMethod]
+		[ExpectedException ( typeof ( ApiException ) )]
+		public void CheckSendMessageToUserBadModelState () {
+			var client = new Client();
+			client.SendMessage( new MessageToUserModel {
+				DestinationAddress = "bad destination"
+			} );
+		}
+
 	}
 }

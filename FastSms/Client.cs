@@ -224,7 +224,7 @@ namespace FastSms {
 				case ReportType.Messages: {
 					report = ReportHelper.GetMessageReport( response );
 					break;
-				}			
+				}
 				case ReportType.Outbox: {
 					report = ReportHelper.GetOuboxReport( response );
 					break;
@@ -238,7 +238,7 @@ namespace FastSms {
 					break;
 				}
 				default:
-					throw new ApiException( response );	
+					throw new ApiException( response );
 			}
 			return report;
 		}
@@ -280,7 +280,7 @@ namespace FastSms {
 
 				var resultStatus = response.Split( '\n' )[0].Split( ':' )[1].Replace( "\n", string.Empty ).Replace( " ", string.Empty );
 				resultList.Add( new ImportStatusModel {
-					Number = iterator++,
+					Number = messageNumber++,
 					Status = resultStatus
 				} );
 			}
