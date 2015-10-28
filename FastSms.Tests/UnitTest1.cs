@@ -103,39 +103,39 @@ namespace FastSms.Tests {
 
 		[TestMethod]
 		public void CheckImportContactsCsvSuccess () {
-			Assert.AreEqual( "Success", ImportContactsCsvResults[0].Status );
+			Assert.AreEqual( "Success", ImportContactsCsvResults[0].Status , "Status must be Success" );
 		}
 
 		[TestMethod]
 		public void CheckImportContactsCsvNoName () {
-			Assert.AreEqual( "Failed", ImportContactsCsvResults[2].Status );
+			Assert.AreEqual( "Failed", ImportContactsCsvResults[2].Status , "Status must be Failed" );
 		}
 
 		[TestMethod]
 		public void CheckImportContactsCsvNoNumber () {
-			Assert.AreEqual( "Failed", ImportContactsCsvResults[3].Status );
+			Assert.AreEqual( "Failed", ImportContactsCsvResults[3].Status, "Status must be Failed" );
 		}
 
 		[TestMethod]
 		public void CheckImportContactsCsvDuplicateName () {
-			Assert.AreEqual( "Duplicate Name", ImportContactsCsvResults[6].Status );
+			Assert.AreEqual( "DuplicateName", ImportContactsCsvResults[6].Status, "Status must be DuplicateName" );
 		}
 
 		[TestMethod]
 		public void CheckImportContactsCsvDuplicateNumber () {
-			Assert.AreEqual( "Duplicate Number", ImportContactsCsvResults[7].Status );
+			Assert.AreEqual( "DuplicateNumber", ImportContactsCsvResults[7].Status, "Status must be DuplicateName" );
 		}
 
 		[TestMethod]
 		public void CheckImportContactsCsvWithIgnoreDupes () {
 			Client.DeleteAllContacts();
 			ImportContactsCsvResults = Client.ImportContactsCsv( ContactModelList, 1 );
-			Assert.AreEqual( "Success", ImportContactsCsvResults[6].Status );
+			Assert.AreEqual( "Success", ImportContactsCsvResults[6].Status, "Status must be Success" );
 		}
 
 		[TestMethod]
 		public void CheckImportContactsCsvBadNumber () {
-			Assert.AreEqual( "Failed", ImportContactsCsvResults[4].Status );
+			Assert.AreEqual( "Failed", ImportContactsCsvResults[4].Status, "Status must be Failed" );
 		}
 
 		[TestMethod]
@@ -183,12 +183,12 @@ namespace FastSms.Tests {
 
 		[TestMethod]
 		public void CheckMessageStatusDelivered () {
-			Assert.AreEqual( "Delivered", Client.CheckMessageStatus( "73786923" ) );
+			Assert.AreEqual( "Delivered", Client.CheckMessageStatus( "73786923" ), "This message is delivered");
 		}
 
 		[TestMethod]
 		public void CheckMessageStatusUndeliverable () {
-			Assert.AreEqual( "Undeliverable", Client.CheckMessageStatus( "73959607" ) );
+			Assert.AreEqual( "Undeliverable", Client.CheckMessageStatus( "73959607" ), "This message is undelivereble" );
 		}
 
 		[TestMethod]
