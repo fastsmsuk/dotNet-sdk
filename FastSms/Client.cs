@@ -217,28 +217,30 @@ namespace FastSms {
 			if ( hasError && error < 1 ) {
 				throw new ApiException( response );
 			}
-			List<ReportModel> resultList;
+
+			List<ReportModel> report;
+
 			switch ( reportType ) {
 				case ReportType.Messages: {
-					resultList = ReportHelper.GetMessageReport( response );
+					report = ReportHelper.GetMessageReport( response );
 					break;
-				}			
+				}
 				case ReportType.Outbox: {
-					resultList = ReportHelper.GetOuboxReport( response );
+					report = ReportHelper.GetOuboxReport( response );
 					break;
 				}
 				case ReportType.InboundMessages: {
-					resultList = ReportHelper.GetInboundReport( response );
+					report = ReportHelper.GetInboundReport( response );
 					break;
 				}
 				case ReportType.Usage: {
-					resultList = ReportHelper.GetUsageReport( response );
+					report = ReportHelper.GetUsageReport( response );
 					break;
 				}
 				default:
-					throw new ApiException( response );	
+					throw new ApiException( response );
 			}
-			return resultList;
+			return report;
 		}
 
 		/// <summary>
@@ -251,7 +253,7 @@ namespace FastSms {
 		/// <returns>Result of import.</returns>
 		public List<ImportStatusModel> ImportContactsCsv ( List<ContactsCSVModel> contacts, int ignoreDupes = 0, int overwriteDupesOne = 0, int overwriteDupesTwo = 0 ) {
 			var resultList = new List<ImportStatusModel>();
-			var iterator = 1;
+			var messageNumber = 1;
 			foreach ( var contact in contacts ) {
 				var urlForGroups = string.Empty;
 
@@ -275,8 +277,9 @@ namespace FastSms {
 				if ( hasError && error < 1 ) {
 					throw new ApiException( response );
 				}
+
 				var resultStatus = response.Split( '\n' )[0].Split( ':' )[1].Replace( "\n", string.Empty ).Replace( " ", string.Empty );
-				resultList.Add( new ImportStatusModel( iterator++, resultStatus ) );
+				resultList.Add( new ImportStatusModel( messageNumber++, resultStatus ) );
 			}
 			return resultList;
 		}

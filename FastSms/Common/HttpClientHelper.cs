@@ -3,6 +3,12 @@ using System.Net;
 
 namespace FastSms.Common {
 	public static class HttpClientHelper {
+		/// <summary>
+		///    Gets response from API.
+		/// </summary>
+		/// <param name="url">Request url</param>
+		/// <param name="isPost">Is post</param>
+		/// <returns>Response from API.</returns>
 		public static string GetResponse ( string url, bool isPost = true ) {
 			var response = string.Empty;
 

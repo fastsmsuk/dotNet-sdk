@@ -16,52 +16,64 @@ namespace FastSms.Tests {
 		public void TestInitialize () {
 			Client = new Client();
 			Client.DeleteAllContacts();
-			ContactModelList = new List<ContactsCSVModel>();
-			ContactModelList.Add( new ContactsCSVModel() );
-			ContactModelList[0].Name = "NameZ1111";
-			ContactModelList[0].Number = "0984784";
-			ContactModelList[0].Group1 = "group1";
-			ContactModelList.Add( new ContactsCSVModel() );
-			ContactModelList[1].Name = "NameZ2111";
-			ContactModelList[1].Number = "0984724344555842";
-			ContactModelList[1].Group1 = "group1_2";
-			ContactModelList[1].Group2 = "group2_2";
-			ContactModelList[1].Group3 = "group3_3";
-			ContactModelList.Add( new ContactsCSVModel() );
-			ContactModelList[2].Name = "";
-			ContactModelList[2].Number = "0984734442842";
-			ContactModelList[2].Group1 = "group1";
-			ContactModelList[2].Group2 = "group2";
-			ContactModelList.Add( new ContactsCSVModel() );
-			ContactModelList[3].Name = "NZame3111";
-			ContactModelList[3].Number = "";
-			ContactModelList[3].Group1 = "group1";
-			ContactModelList[3].Group2 = "group2";
-			ContactModelList.Add( new ContactsCSVModel() );
-			ContactModelList[4].Name = "NZame4111";
-			ContactModelList[4].Number = "somenumber";
-			ContactModelList[4].Group1 = "group1";
-			ContactModelList[4].Group2 = "group2";
-			ContactModelList.Add( new ContactsCSVModel() );
-			ContactModelList[5].Name = "ZName5111";
-			ContactModelList[5].Number = "35682258";
-			ContactModelList.Add( new ContactsCSVModel() );
-			ContactModelList[6].Name = "NameZ1111";
-			ContactModelList[6].Number = "3568234534258";
-			ContactModelList[6].Group1 = "group1_6";
-			ContactModelList.Add( new ContactsCSVModel() );
-			ContactModelList[7].Name = "Name6111Z";
-			ContactModelList[7].Number = "0984784";
-			ContactModelList[7].Group1 = "group1_7";
+			ContactModelList = new List<ContactsCSVModel> {
+				new ContactsCSVModel {
+					Name = "NameZ1111",
+					Number = "0984784",
+					Group1 = "group1"
+				},
+				new ContactsCSVModel {
+					Name = "NameZ2111",
+					Number = "0984724344555842",
+					Group1 = "group1_2",
+					Group2 = "group2_2",
+					Group3 = "group3_3"
+				},
+				new ContactsCSVModel {
+					Name = "",
+					Number = "0984734442842",
+					Group1 = "group1",
+					Group2 = "group2"
+				},
+				new ContactsCSVModel {
+					Name = "NZame3111",
+					Number = "",
+					Group1 = "group1",
+					Group2 = "group2"
+				},
+				new ContactsCSVModel {
+					Name = "NZame4111",
+					Number = "somenumber",
+					Group1 = "group1",
+					Group2 = "group2"
+				},
+				new ContactsCSVModel {
+					Name = "ZName5111",
+					Number = "35682258"
+				},
+				new ContactsCSVModel {
+					Name = "NameZ1111",
+					Number = "3568234534258",
+					Group1 = "group1_6"
+				},
+				new ContactsCSVModel {
+					Name = "Name6111Z",
+					Number = "0984784",
+					Group1 = "group1_7"
+				}
+			};
+
 			ImportContactsCsvResults = Client.ImportContactsCsv( ContactModelList );
-			UserModel = new UserModel();
-			UserModel.FirstName = "Name";
-			UserModel.LastName = "LastName";
-			UserModel.Email = "email";
-			UserModel.AccessLevel = "Normal";
-			UserModel.ChildUsername = "username";
-			UserModel.ChildPassword = "12345";
-			UserModel.Credits = 22;
+
+			UserModel = new UserModel {
+				FirstName = "Name",
+				LastName = "LastName",
+				Email = "email",
+				AccessLevel = "Normal",
+				ChildUsername = "username",
+				ChildPassword = "12345",
+				Credits = 22
+			};
 		}
 
 		[TestMethod]
