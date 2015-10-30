@@ -14,7 +14,7 @@
 		public string Destination { get; set; }
 
 		/// <summary>
-		///    Sattus.
+		///    Status.
 		/// </summary>
 		public string Status { get; set; }
 	}

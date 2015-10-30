@@ -9,7 +9,7 @@
 		public string MessageId { get; set; }
 
 		/// <summary>
-		///    From.
+		///    Date From.
 		/// </summary>
 		public string From { get; set; }
 
@@ -24,7 +24,7 @@
 		public string Message { get; set; }
 
 		/// <summary>
-		///    Receive date.
+		///    Received date.
 		/// </summary>
 		public string ReceivedDate { get; set; }
 

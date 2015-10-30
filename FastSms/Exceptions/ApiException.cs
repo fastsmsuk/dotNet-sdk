@@ -3,6 +3,9 @@ using System.Linq;
 using FastSms.Common;
 
 namespace FastSms.Exceptions {
+	/// <summary>
+	/// API Exception.
+	/// </summary>
 	public class ApiException : Exception {
 		public ApiException () {
 		}

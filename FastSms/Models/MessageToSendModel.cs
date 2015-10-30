@@ -4,7 +4,7 @@
 	/// </summary>
 	public class MessageToSendModel {
 		/// <summary>
-		///    Sourse address.
+		///    Source address.
 		/// </summary>
 		public string SourceAddress { get; set; }
 
@@ -19,7 +19,7 @@
 		public string ScheduleDate { get; set; }
 
 		/// <summary>
-		///    Sourse TON.
+		///    Source TON.
 		/// </summary>
 		public string SourceTon { get; set; }
 
@@ -34,7 +34,7 @@
 		public int? GetAllMessageIDs { get; set; }
 
 		/// <summary>
-		///    Get bg send id.
+		///    Get background send id.
 		/// </summary>
 		public int? GetBgSendId { get; set; }
 	}
