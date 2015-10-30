@@ -92,7 +92,7 @@ namespace FastSms.Tests {
 		[TestMethod]
 		public void CheckImportContactsCsvWithIgnoreDupes () {
 			Client.DeleteAllContacts();
-			ImportContactsCsvResults = Client.ImportContactsCsv( ContactModelList, 1 );
+			ImportContactsCsvResults = Client.ImportContactsCsv( ContactModelList, true );
 			Assert.AreEqual( "Success", ImportContactsCsvResults[6].Status, "Status must be Success" );
 		}
 

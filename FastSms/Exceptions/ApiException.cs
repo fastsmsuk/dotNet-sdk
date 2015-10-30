@@ -4,7 +4,7 @@ using FastSms.Common;
 
 namespace FastSms.Exceptions {
 	/// <summary>
-	/// API Exception.
+	///    API Exception.
 	/// </summary>
 	public class ApiException : Exception {
 		public ApiException () {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using FastSms.Common;
+﻿using FastSms.Common;
 using FastSms.Exceptions;
 using FastSms.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -17,14 +14,14 @@ namespace FastSms.Tests {
 		}
 
 		[TestMethod]
-		[ExpectedException( typeof( ApiException ) )]
+		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckGetReportsBadToken () {
 			var client = new Client( "Token" );
 			client.GetReports( ReportType.Messages, "20151025000000", "20151027000000" );
 		}
 
 		[TestMethod]
-		[ExpectedException( typeof( ApiException ) )]
+		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckGetReportsWrongDatesFormat () {
 			Client.GetReports( ReportType.Messages, "bbbbbbbbbbbbb", "20151027000000" );
 		}
@@ -40,6 +37,5 @@ namespace FastSms.Tests {
 			var list = Client.GetReports( ReportType.Messages, "20151025000000", "20151027000000" );
 			Assert.IsTrue( list[0] is MessageReportModel );
 		}
-
 	}
 }

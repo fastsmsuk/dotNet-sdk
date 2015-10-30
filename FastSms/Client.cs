@@ -251,7 +251,7 @@ namespace FastSms {
 		/// <param name="overwriteDupesOne">Ignore dupes</param>
 		/// <param name="overwriteDupesTwo">Overwrite duplicate number</param>
 		/// <returns>Result of import.</returns>
-		public List<ImportStatusModel> ImportContactsCsv ( List<ContactsCSVModel> contacts, int ignoreDupes = 0, int overwriteDupesOne = 0, int overwriteDupesTwo = 0 ) {
+		public List<ImportStatusModel> ImportContactsCsv ( List<ContactsCSVModel> contacts, bool ignoreDupes = false, bool overwriteDupesOne = false, bool overwriteDupesTwo = false ) {
 			var resultList = new List<ImportStatusModel>();
 			var messageNumber = 1;
 			foreach ( var contact in contacts ) {
@@ -268,7 +268,7 @@ namespace FastSms {
 				}
 
 				var requestUrl = string.Format( "{0}{1}&Action=ImportContactsCSV&ContactsCSV={2},{3},{4}{5}&IgnoreDupes={6}&OverwriteDupes={7}&OverwriteDupes={8}",
-					Constants.ApiUrl, _token, contact.Name, contact.Number, contact.Email, urlForGroups, ignoreDupes, overwriteDupesOne, overwriteDupesTwo );
+					Constants.ApiUrl, _token, contact.Name, contact.Number, contact.Email, urlForGroups, ignoreDupes ? 1 : 0, overwriteDupesOne ? 1 : 0, overwriteDupesTwo ? 1 : 0 );
 
 				var response = HttpClientHelper.GetResponse( requestUrl );
 
@@ -287,6 +287,7 @@ namespace FastSms {
 			return resultList;
 		}
 
+		//This method is not implemented in API yet.
 		///// <summary>
 		/////    Gets background messages.
 		///// </summary>

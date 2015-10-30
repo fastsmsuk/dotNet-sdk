@@ -3,7 +3,6 @@
 	///    Import status model.
 	/// </summary>
 	public class ImportStatusModel {
-	
 		/// <summary>
 		///    Number.
 		/// </summary>
