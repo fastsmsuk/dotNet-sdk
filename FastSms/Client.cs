@@ -287,23 +287,23 @@ namespace FastSms {
 			return resultList;
 		}
 
-		/// <summary>
-		///    Gets background messages.
-		/// </summary>
-		/// <param name="bgSendId">Background send ID</param>
-		/// <returns>List of background messages.</returns>
-		public List<MessageModel> GetBgMessages ( string bgSendId ) {
-			var requestUrl = string.Format( "{0}{1}&Action=GetBGMessages&BGSendID={2}", Constants.ApiUrl, _token, bgSendId );
+		///// <summary>
+		/////    Gets background messages.
+		///// </summary>
+		///// <param name="bgSendId">Background send ID</param>
+		///// <returns>List of background messages.</returns>
+		//public List<MessageModel> GetBgMessages ( string bgSendId ) {
+		//	var requestUrl = string.Format( "{0}{1}&Action=GetBGMessages&BGSendID={2}", Constants.ApiUrl, _token, bgSendId );
 
-			var response = HttpClientHelper.GetResponse( requestUrl );
+		//	var response = HttpClientHelper.GetResponse( requestUrl );
 
-			try {
-				var lisOfMessages = JsonConvert.DeserializeObject<List<MessageModel>>( response );
-				return lisOfMessages;
-			} catch ( Exception ) {
-				var error = JsonConvert.DeserializeObject<ErrorMessageModel>( response );
-				throw new ApiException( error.Number );
-			}
-		}
+		//	try {
+		//		var lisOfMessages = JsonConvert.DeserializeObject<List<MessageModel>>( response );
+		//		return lisOfMessages;
+		//	} catch ( Exception ) {
+		//		var error = JsonConvert.DeserializeObject<ErrorMessageModel>( response );
+		//		throw new ApiException( error.Number );
+		//	}
+		//}
 	}
 }
