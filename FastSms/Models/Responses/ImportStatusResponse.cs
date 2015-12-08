@@ -1,8 +1,8 @@
-﻿namespace FastSms.Models {
+﻿namespace FastSms.Models.Responses {
 	/// <summary>
 	///    Import status model.
 	/// </summary>
-	public class ImportStatusModel {
+	public class ImportStatusResponse {
 		/// <summary>
 		///    Number.
 		/// </summary>

@@ -13,7 +13,7 @@ namespace FastSms.Exceptions {
 		public ApiException ( string errorCode ) {
 			Code = errorCode;
 
-			var error = Constants.ErrorList.FirstOrDefault( item => item.Key == errorCode ).Value;
+			var error = Errors.ErrorList.FirstOrDefault( item => item.Key == errorCode ).Value;
 			Message = error ?? "N/A";
 		}
 

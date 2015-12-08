@@ -1,17 +1,18 @@
 ﻿using FastSms.Exceptions;
 using FastSms.Models;
+using FastSms.Models.Requests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FastSms.Tests {
 	[TestClass]
 	public class UserTests {
 		public Client Client;
-		public UserModel UserModel;
+		public CreateUserRequest UserModel;
 
 		[TestInitialize]
 		public void TestInitialize () {
 			Client = new Client();
-			UserModel = new UserModel {
+			UserModel = new CreateUserRequest {
 				FirstName = "Name",
 				LastName = "LastName",
 				Email = "email",

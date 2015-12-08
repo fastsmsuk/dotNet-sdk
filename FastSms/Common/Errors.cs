@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 
 namespace FastSms.Common {
-	public static class Constants {
-		public static readonly string ApiUrl = "https://my.fastsms.co.uk/api?Token=";
-
+	public static class Errors {
 		public static readonly Dictionary<string, string> ErrorList = new Dictionary<string, string> {
 			{"-100", "Not Enough Credits"},
 			{"-101", "Invalid CreditID"},

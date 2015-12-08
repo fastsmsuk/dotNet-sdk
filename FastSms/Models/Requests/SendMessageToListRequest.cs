@@ -1,8 +1,8 @@
-﻿namespace FastSms.Models {
+﻿namespace FastSms.Models.Requests {
 	/// <summary>
 	///    Message to list model.
 	/// </summary>
-	public class MessageToListModel : MessageToSendModel {
+	public class SendMessageToListRequest : BaseSendMessageRequest {
 		/// <summary>
 		///    List name.
 		/// </summary>

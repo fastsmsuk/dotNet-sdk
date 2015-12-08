@@ -1,6 +1,8 @@
 ﻿using FastSms.Common;
+using FastSms.Enums;
 using FastSms.Exceptions;
 using FastSms.Models;
+using FastSms.Models.Responses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FastSms.Tests {
@@ -35,7 +37,7 @@ namespace FastSms.Tests {
 		[TestMethod]
 		public void CheckGetReportsReturnedType () {
 			var list = Client.GetReports( ReportType.Messages, "20151025000000", "20151027000000" );
-			Assert.IsTrue( list[0] is MessageReportModel );
+			Assert.IsTrue( list[0] is MessageReportResponse );
 		}
 	}
 }

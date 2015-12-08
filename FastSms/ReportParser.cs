@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
-using FastSms.Models;
+using FastSms.Models.Responses;
 
-namespace FastSms.Common {
-	public static class ReportHelper {
+namespace FastSms {
+	internal static class ReportParser {
 		/// <summary>
 		///    Gets inbound messages.
 		/// </summary>
 		/// <param name="response">Response from API</param>
 		/// <returns>List of messages.</returns>
-		public static List<ReportModel> GetInboundReport ( string response ) {
+		public static List<BaseReportResponse> GetInboundReport ( string response ) {
 			var responseList = response.Split( '\n' );
 
-			var reportResult = new List<ReportModel>();
+			var reportResult = new List<BaseReportResponse>();
 
 			for ( var index = 1; index < responseList.Length; index++ ) {
-				var inboundReport = new InboundMessagesReportModel();
+				var inboundReport = new InboundMessagesReportResponse();
 				var currentList = responseList[index].Split( ',' );
 				if ( !string.IsNullOrEmpty( responseList[index] ) ) {
 					inboundReport.MessageId = currentList[0].Replace( "\"", string.Empty );
@@ -35,13 +35,13 @@ namespace FastSms.Common {
 		/// </summary>
 		/// <param name="response">Response from API</param>
 		/// <returns>List of messages.</returns>
-		public static List<ReportModel> GetUsageReport ( string response ) {
+		public static List<BaseReportResponse> GetUsageReport ( string response ) {
 			var responseList = response.Split( '\n' );
 
-			var reportResult = new List<ReportModel>();
+			var reportResult = new List<BaseReportResponse>();
 
 			for ( var index = 1; index < responseList.Length; index++ ) {
-				var usageReport = new UsageReportModel();
+				var usageReport = new UsageReportResponse();
 				var currentList = responseList[index].Split( ',' );
 				if ( !string.IsNullOrEmpty( responseList[index] ) ) {
 					usageReport.Status = currentList[0].Replace( "\"", string.Empty );
@@ -58,13 +58,13 @@ namespace FastSms.Common {
 		/// </summary>
 		/// <param name="response">Response from API</param>
 		/// <returns>List of messages.</returns>
-		public static List<ReportModel> GetOuboxReport ( string response ) {
+		public static List<BaseReportResponse> GetOuboxReport ( string response ) {
 			var responseList = response.Split( '\n' );
 
-			var reportResult = new List<ReportModel>();
+			var reportResult = new List<BaseReportResponse>();
 
 			for ( var index = 1; index < responseList.Length; index++ ) {
-				var outboxReport = new OutboxReportModel();
+				var outboxReport = new OutboxReportResponse();
 				var currentList = responseList[index].Split( ',' );
 				if ( !string.IsNullOrEmpty( responseList[index] ) ) {
 					outboxReport.MessageId = currentList[0].Replace( "\"", string.Empty );
@@ -87,13 +87,13 @@ namespace FastSms.Common {
 		/// </summary>
 		/// <param name="response">Response from API</param>
 		/// <returns>List of messages.</returns>
-		public static List<ReportModel> GetMessageReport ( string response ) {
+		public static List<BaseReportResponse> GetMessageReport ( string response ) {
 			var responseList = response.Split( '\n' );
 
-			var reportResult = new List<ReportModel>();
+			var reportResult = new List<BaseReportResponse>();
 
 			for ( var index = 1; index < responseList.Length; index++ ) {
-				var messageReport = new MessageReportModel();
+				var messageReport = new MessageReportResponse();
 				var currentList = responseList[index].Split( ',' );
 				if ( !string.IsNullOrEmpty( responseList[index] ) ) {
 					messageReport.MessageId = currentList[0].Replace( "\"", string.Empty );

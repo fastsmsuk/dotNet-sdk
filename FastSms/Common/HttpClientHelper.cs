@@ -2,7 +2,7 @@
 using System.Net;
 
 namespace FastSms.Common {
-	public static class HttpClientHelper {
+	internal static class HttpClientHelper {
 		/// <summary>
 		///    Gets response from API.
 		/// </summary>
@@ -17,8 +17,8 @@ namespace FastSms.Common {
 			httpWebRequest.ContentType = "text/json";
 			httpWebRequest.Method = isPost ? "POST" : "GET";
 
-			// Send request to api.
-			using ( var streamWriter = new StreamWriter( httpWebRequest.GetRequestStream() ) ) {
+            // Send request to api.
+            using ( var streamWriter = new StreamWriter( httpWebRequest.GetRequestStream() ) ) {
 				streamWriter.Write( response );
 				streamWriter.Flush();
 			}

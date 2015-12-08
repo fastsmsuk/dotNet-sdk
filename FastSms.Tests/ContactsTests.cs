@@ -1,60 +1,62 @@
 ﻿using System.Collections.Generic;
 using FastSms.Exceptions;
 using FastSms.Models;
+using FastSms.Models.Requests;
+using FastSms.Models.Responses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FastSms.Tests {
 	[TestClass]
 	public class ContactsTests {
 		public Client Client;
-		public List<ContactsCSVModel> ContactModelList;
-		public List<ImportStatusModel> ImportContactsCsvResults;
+		public List<ImportContactsRequest> ContactModelList;
+		public List<ImportStatusResponse> ImportContactsCsvResults;
 
 		[TestInitialize]
 		public void TestInitialize () {
 			Client = new Client();
 			Client.DeleteAllContacts();
-			ContactModelList = new List<ContactsCSVModel> {
-				new ContactsCSVModel {
+			ContactModelList = new List<ImportContactsRequest> {
+				new ImportContactsRequest {
 					Name = "NameZ1111",
 					Number = "0984784",
 					Group1 = "group1"
 				},
-				new ContactsCSVModel {
+				new ImportContactsRequest {
 					Name = "NameZ2111",
 					Number = "0984724344555842",
 					Group1 = "group1_2",
 					Group2 = "group2_2",
 					Group3 = "group3_3"
 				},
-				new ContactsCSVModel {
+				new ImportContactsRequest {
 					Name = "",
 					Number = "0984734442842",
 					Group1 = "group1",
 					Group2 = "group2"
 				},
-				new ContactsCSVModel {
+				new ImportContactsRequest {
 					Name = "NZame3111",
 					Number = "",
 					Group1 = "group1",
 					Group2 = "group2"
 				},
-				new ContactsCSVModel {
+				new ImportContactsRequest {
 					Name = "NZame4111",
 					Number = "somenumber",
 					Group1 = "group1",
 					Group2 = "group2"
 				},
-				new ContactsCSVModel {
+				new ImportContactsRequest {
 					Name = "ZName5111",
 					Number = "35682258"
 				},
-				new ContactsCSVModel {
+				new ImportContactsRequest {
 					Name = "NameZ1111",
 					Number = "3568234534258",
 					Group1 = "group1_6"
 				},
-				new ContactsCSVModel {
+				new ImportContactsRequest {
 					Name = "Name6111Z",
 					Number = "0984784",
 					Group1 = "group1_7"

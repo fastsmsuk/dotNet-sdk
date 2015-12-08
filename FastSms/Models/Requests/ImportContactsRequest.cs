@@ -1,8 +1,8 @@
-﻿namespace FastSms.Models {
+﻿namespace FastSms.Models.Requests {
 	/// <summary>
 	///    Contact CSV model.
 	/// </summary>
-	public class ContactsCSVModel {
+	public class ImportContactsRequest {
 		/// <summary>
 		///    Name.
 		/// </summary>

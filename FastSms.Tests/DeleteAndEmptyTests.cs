@@ -1,12 +1,13 @@
 ﻿using FastSms.Exceptions;
 using FastSms.Models;
+using FastSms.Models.Requests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FastSms.Tests {
 	[TestClass]
 	public class DeleteAndEmptyTests {
 		public Client Client;
-		public UserModel UserModel;
+		public CreateUserRequest UserModel;
 
 		[TestInitialize]
 		public void TestInitialize () {

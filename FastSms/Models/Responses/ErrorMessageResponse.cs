@@ -1,20 +1,18 @@
-﻿using Newtonsoft.Json;
-
-namespace FastSms.Models {
+﻿namespace FastSms.Models.Responses {
 	/// <summary>
 	///    Error message model.
 	/// </summary>
-	public class ErrorMessageModel {
+	public class ErrorMessageResponse {
 		/// <summary>
 		///    Number.
 		/// </summary>
-		[JsonProperty ( PropertyName = "error" )]
+		//[JsonProperty ( PropertyName = "error" )]
 		public string Number { get; set; }
 
 		/// <summary>
 		///    Message.
 		/// </summary>
-		[JsonProperty ( PropertyName = "message" )]
+		//[JsonProperty ( PropertyName = "message" )]
 		public string Message { get; set; }
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using FastSms.Exceptions;
 using FastSms.Models;
+using FastSms.Models.Requests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FastSms.Tests {
@@ -16,14 +17,14 @@ namespace FastSms.Tests {
 		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckSendMessageToGroupBadToken () {
 			var client = new Client( "bad token" );
-			client.SendMessage( new MessageToGroupModel() );
+			client.SendMessage( new MessageToGroupRequest() );
 		}
 
 		[TestMethod]
 		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckSendMessageToGroupBadModelState () {
 			var client = new Client();
-			client.SendMessage( new MessageToGroupModel {
+			client.SendMessage( new MessageToGroupRequest {
 				GroupName = "bad group name",
 				SourceAddress = "bad source",
 				Body = "some text"
@@ -34,14 +35,14 @@ namespace FastSms.Tests {
 		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckSendMessageToListBadToken () {
 			var client = new Client( "bad token" );
-			client.SendMessage( new MessageToListModel() );
+			client.SendMessage( new SendMessageToListRequest() );
 		}
 
 		[TestMethod]
 		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckSendMessageToListBadModelState () {
 			var client = new Client();
-			client.SendMessage( new MessageToListModel {
+			client.SendMessage( new SendMessageToListRequest {
 				ListName = "Bad list name",
 				Body = "body",
 				SourceAddress = ""
@@ -52,14 +53,14 @@ namespace FastSms.Tests {
 		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckSendMessageToUserBadToken () {
 			var client = new Client( "bad token" );
-			client.SendMessage( new MessageToUserModel() );
+			client.SendMessage( new SendMessageToUserRequest() );
 		}
 
 		[TestMethod]
 		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckSendMessageToUserBadModelState () {
 			var client = new Client();
-			client.SendMessage( new MessageToUserModel {
+			client.SendMessage( new SendMessageToUserRequest {
 				DestinationAddress = "bad destination"
 			} );
 		}

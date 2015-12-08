@@ -1,8 +1,8 @@
-﻿namespace FastSms.Models {
+﻿namespace FastSms.Models.Responses {
 	/// <summary>
 	///    Outbox report model.
 	/// </summary>
-	public class OutboxReportModel : ReportModel {
+	public class OutboxReportResponse : BaseReportResponse {
 		/// <summary>
 		///    Message id.
 		/// </summary>

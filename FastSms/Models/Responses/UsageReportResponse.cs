@@ -1,8 +1,8 @@
-﻿namespace FastSms.Models {
+﻿namespace FastSms.Models.Responses {
 	/// <summary>
 	///    Usage report model.
 	/// </summary>
-	public class UsageReportModel : ReportModel {
+	public class UsageReportResponse : BaseReportResponse {
 		/// <summary>
 		///    Status.
 		/// </summary>

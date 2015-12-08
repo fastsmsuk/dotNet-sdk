@@ -1,8 +1,8 @@
-﻿namespace FastSms.Models {
+﻿namespace FastSms.Models.Requests {
 	/// <summary>
 	///    Message to group model.
 	/// </summary>
-	public class MessageToGroupModel : MessageToSendModel {
+	public class MessageToGroupRequest : BaseSendMessageRequest {
 		/// <summary>
 		///    Group name.
 		/// </summary>

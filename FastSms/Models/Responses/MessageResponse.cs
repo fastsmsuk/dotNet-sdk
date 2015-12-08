@@ -1,8 +1,8 @@
-﻿namespace FastSms.Models {
+﻿namespace FastSms.Models.Responses {
 	/// <summary>
 	///    Message model.
 	/// </summary>
-	public class MessageModel {
+	public class MessageResponse {
 		/// <summary>
 		///    Message id.
 		/// </summary>
