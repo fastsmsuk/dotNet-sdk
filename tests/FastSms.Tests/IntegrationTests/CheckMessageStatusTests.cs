@@ -1,14 +1,14 @@
 ﻿using FastSms.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace FastSms.Tests {
+namespace FastSms.Tests.IntegrationTests {
 	[TestClass]
 	public class CheckMessageStatusTests {
-		public Client Client;
+		public FastSmsClient Client;
 
 		[TestInitialize]
 		public void TestInitialize () {
-			Client = new Client();
+			Client = new FastSmsClient();
 		}
 
 		[TestMethod]
@@ -20,7 +20,7 @@ namespace FastSms.Tests {
 		[TestMethod]
 		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckMessageStatusBadToken () {
-			Client = new Client( "Token" );
+			Client = new FastSmsClient( "Token" );
 			Client.CheckMessageStatus( "73786923" );
 		}
 

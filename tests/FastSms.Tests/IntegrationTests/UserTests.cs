@@ -1,17 +1,16 @@
 ﻿using FastSms.Exceptions;
-using FastSms.Models;
 using FastSms.Models.Requests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace FastSms.Tests {
+namespace FastSms.Tests.IntegrationTests {
 	[TestClass]
 	public class UserTests {
-		public Client Client;
+		public FastSmsClient Client;
 		public CreateUserRequest UserModel;
 
 		[TestInitialize]
 		public void TestInitialize () {
-			Client = new Client();
+			Client = new FastSmsClient();
 			UserModel = new CreateUserRequest {
 				FirstName = "Name",
 				LastName = "LastName",
@@ -26,7 +25,7 @@ namespace FastSms.Tests {
 		[TestMethod]
 		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckCreateUserBadToken () {
-			Client = new Client( "Token" );
+			Client = new FastSmsClient( "Token" );
 			Client.CreateUser( UserModel );
 		}
 

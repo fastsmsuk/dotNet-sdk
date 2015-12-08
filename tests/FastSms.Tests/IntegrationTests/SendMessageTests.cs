@@ -1,29 +1,28 @@
 ﻿using FastSms.Exceptions;
-using FastSms.Models;
 using FastSms.Models.Requests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace FastSms.Tests {
+namespace FastSms.Tests.IntegrationTests {
 	[TestClass]
 	public class SendMessageTests {
-		public Client Client;
+		public FastSmsClient Client;
 
 		[TestInitialize]
 		public void TestInitialize () {
-			Client = new Client();
+			Client = new FastSmsClient();
 		}
 
 		[TestMethod]
 		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckSendMessageToGroupBadToken () {
-			var client = new Client( "bad token" );
+			var client = new FastSmsClient( "bad token" );
 			client.SendMessage( new MessageToGroupRequest() );
 		}
 
 		[TestMethod]
 		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckSendMessageToGroupBadModelState () {
-			var client = new Client();
+			var client = new FastSmsClient();
 			client.SendMessage( new MessageToGroupRequest {
 				GroupName = "bad group name",
 				SourceAddress = "bad source",
@@ -34,14 +33,14 @@ namespace FastSms.Tests {
 		[TestMethod]
 		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckSendMessageToListBadToken () {
-			var client = new Client( "bad token" );
+			var client = new FastSmsClient( "bad token" );
 			client.SendMessage( new SendMessageToListRequest() );
 		}
 
 		[TestMethod]
 		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckSendMessageToListBadModelState () {
-			var client = new Client();
+			var client = new FastSmsClient();
 			client.SendMessage( new SendMessageToListRequest {
 				ListName = "Bad list name",
 				Body = "body",
@@ -52,14 +51,14 @@ namespace FastSms.Tests {
 		[TestMethod]
 		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckSendMessageToUserBadToken () {
-			var client = new Client( "bad token" );
+			var client = new FastSmsClient( "bad token" );
 			client.SendMessage( new SendMessageToUserRequest() );
 		}
 
 		[TestMethod]
 		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckSendMessageToUserBadModelState () {
-			var client = new Client();
+			var client = new FastSmsClient();
 			client.SendMessage( new SendMessageToUserRequest {
 				DestinationAddress = "bad destination"
 			} );

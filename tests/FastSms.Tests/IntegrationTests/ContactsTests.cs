@@ -1,20 +1,19 @@
 ﻿using System.Collections.Generic;
 using FastSms.Exceptions;
-using FastSms.Models;
 using FastSms.Models.Requests;
 using FastSms.Models.Responses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace FastSms.Tests {
+namespace FastSms.Tests.IntegrationTests {
 	[TestClass]
 	public class ContactsTests {
-		public Client Client;
+		public FastSmsClient Client;
 		public List<ImportContactsRequest> ContactModelList;
 		public List<ImportStatusResponse> ImportContactsCsvResults;
 
 		[TestInitialize]
 		public void TestInitialize () {
-			Client = new Client();
+			Client = new FastSmsClient();
 			Client.DeleteAllContacts();
 			ContactModelList = new List<ImportContactsRequest> {
 				new ImportContactsRequest {
@@ -106,7 +105,7 @@ namespace FastSms.Tests {
 		[TestMethod]
 		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckImportContactsCsvBadToken () {
-			var newClient = new Client( "Token" );
+			var newClient = new FastSmsClient( "Token" );
 			newClient.ImportContactsCsv( ContactModelList );
 		}
 	}

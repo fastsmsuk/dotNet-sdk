@@ -42,8 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client.cs" />
-    <Compile Include="Common\Errors.cs" />
+    <Compile Include="FastSmsClient.cs" />
+    <Compile Include="Errors.cs" />
     <Compile Include="Common\HttpClientHelper.cs" />
     <Compile Include="ReportParser.cs" />
     <Compile Include="Enums\ReportType.cs" />

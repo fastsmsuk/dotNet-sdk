@@ -48,7 +48,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FastSms\FastSms.csproj">
+    <ProjectReference Include="..\..\src\FastSms\FastSms.csproj">
       <Project>{7f9ec519-d06c-48f0-983a-03ef2fc310c0}</Project>
       <Name>FastSms</Name>
     </ProjectReference>

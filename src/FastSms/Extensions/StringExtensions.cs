@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace FastSms.Common
+namespace FastSms.Extensions
 {
     internal static class StringExtensions
     {

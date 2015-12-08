@@ -1,26 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using FastSms.Common;
 using FastSms.Enums;
 using FastSms.Exceptions;
+using FastSms.Extensions;
 using FastSms.Models.Requests;
 using FastSms.Models.Responses;
+using FastSms.Remote;
 
 namespace FastSms {
-	public class Client {
-        public static readonly string ApiUrl = "https://my.fastsms.co.uk/api?Token=";
+	public class FastSmsClient {
+        public const string ApiUrl = "https://my.fastsms.co.uk/api?Token=";
 
         private readonly string _token;
+	    private readonly IHttpClient _httpClient;
 
-		public Client () {
+		public FastSmsClient () {
 			_token = ConfigurationManager.AppSettings["Token"];
+            _httpClient = new HttpClient();
 		}
 
-		public Client ( string token ) {
+		public FastSmsClient ( string token ) {
 			_token = token;
-		}
+            _httpClient = new HttpClient();
+        }
+
+        internal FastSmsClient(string token, IHttpClient httpClient)
+        {
+            _token = token;
+            _httpClient = httpClient;
+        }
 
         /// <summary>
         ///    Checks your current credit balance. No further parameters are required.
@@ -30,7 +39,7 @@ namespace FastSms {
         public decimal CheckCredits () {
 			var requestUrl = string.Format( "{0}{1}&Action=CheckCredits", ApiUrl, _token );
 
-			var response = HttpClientHelper.GetResponse( requestUrl ).Replace( ",", "." );
+			var response = _httpClient.GetResponse( requestUrl ).Replace( ",", "." );
 
 			var credits = response.AsDecimalSafe();
 			if (credits <= 0m ) {
@@ -47,7 +56,7 @@ namespace FastSms {
         public string CheckMessageStatus ( string messageId ) {
 			var requestUrl = string.Format( "{0}{1}&Action=CheckMessageStatus&MessageID={2}", ApiUrl, _token, messageId );
 
-			var messageStatus = HttpClientHelper.GetResponse( requestUrl );
+			var messageStatus = _httpClient.GetResponse( requestUrl );
 
 			if ( Errors.ErrorList.Keys.Contains( messageStatus ) ) {
 				throw new ApiException( messageStatus );
@@ -64,7 +73,7 @@ namespace FastSms {
 		public void UpdateCredits ( string childUsername, int quantity ) {
 			var requestUrl = string.Format( "{0}{1}&Action=UpdateCredits&ChildUsername={2}&Quantity={3}", ApiUrl, _token, childUsername, quantity );
 
-			var result = HttpClientHelper.GetResponse( requestUrl );
+			var result = _httpClient.GetResponse( requestUrl );
 
 			if ( result.AsIntSafe() != 1 ) {
 				throw new ApiException( result );
@@ -77,7 +86,7 @@ namespace FastSms {
 		public void DeleteAllContacts () {
 			var requestUrl = string.Format( "{0}{1}&Action=DeleteAllContacts", ApiUrl, _token );
 
-			var result = HttpClientHelper.GetResponse( requestUrl );
+			var result = _httpClient.GetResponse( requestUrl );
 
 			if ( result.AsIntSafe() != 1 ) {
 				throw new ApiException( result );
@@ -90,7 +99,7 @@ namespace FastSms {
         public void DeleteAllGroups () {
 			var requestUrl = string.Format( "{0}{1}&Action=DeleteAllGroups", ApiUrl, _token );
 
-			var result = HttpClientHelper.GetResponse( requestUrl );
+			var result = _httpClient.GetResponse( requestUrl );
 
 			if ( result.AsIntSafe() != 1 ) {
 				throw new ApiException( result );
@@ -104,7 +113,7 @@ namespace FastSms {
 		public void EmptyGroup ( string groupName ) {
 			var requestUrl = string.Format( "{0}{1}&Action=EmptyGroup&Group={2}", ApiUrl, _token, groupName );
 
-			var result = HttpClientHelper.GetResponse( requestUrl );
+			var result = _httpClient.GetResponse( requestUrl );
 
 			if ( result.AsIntSafe() != 1 ) {
 				throw new ApiException( result );
@@ -118,7 +127,7 @@ namespace FastSms {
 		public void DeleteGroup ( string groupName ) {
 			var requestUrl = string.Format( "{0}{1}&Action=DeleteGroup&Group={2}", ApiUrl, _token, groupName );
 
-			var result = HttpClientHelper.GetResponse( requestUrl );
+			var result = _httpClient.GetResponse( requestUrl );
 
 			if ( result.AsIntSafe() != 1 ) {
 				throw new ApiException( result );
@@ -135,7 +144,7 @@ namespace FastSms {
 				ApiUrl, _token, user.ChildUsername, user.ChildPassword, user.AccessLevel,
 				user.FirstName, user.LastName, user.Email, user.Credits, user.CreditReminder, user.Alert, user.Telephone );
 
-			var result = HttpClientHelper.GetResponse( requestUrl );
+			var result = _httpClient.GetResponse( requestUrl );
 
 			if ( result.AsIntSafe() != 1 ) {
 				throw new ApiException( result );
@@ -155,7 +164,7 @@ namespace FastSms {
 				messageToUser.ScheduleDate, messageToUser.SourceTon, messageToUser.ValidityPeriod, messageToUser.GetAllMessageIDs,
 				messageToUser.GetBgSendId );
 
-			var messageId = HttpClientHelper.GetResponse( requestUrl );
+			var messageId = _httpClient.GetResponse( requestUrl );
 
 			if ( Errors.ErrorList.Keys.Contains( messageId ) ) {
 				throw new ApiException( messageId );
@@ -175,7 +184,7 @@ namespace FastSms {
 				messageToGroup.ScheduleDate, messageToGroup.SourceTon, messageToGroup.ValidityPeriod, messageToGroup.GetAllMessageIDs,
 				messageToGroup.GetBgSendId );
 
-			var result = HttpClientHelper.GetResponse( requestUrl );
+			var result = _httpClient.GetResponse( requestUrl );
 
 			if ( result.AsIntSafe() < 1 ) {
 				throw new ApiException( result );
@@ -193,7 +202,7 @@ namespace FastSms {
 				messageToList.ScheduleDate, messageToList.SourceTon, messageToList.ValidityPeriod, messageToList.GetAllMessageIDs,
 				messageToList.GetBgSendId );
 
-			var result = HttpClientHelper.GetResponse( requestUrl );
+			var result = _httpClient.GetResponse( requestUrl );
 
 			if ( result.AsIntSafe() < 1 ) {
 				throw new ApiException( result );
@@ -211,7 +220,7 @@ namespace FastSms {
 			var requestUrl = string.Format( "{0}{1}&Action=Report&ReportType={2}&From={3}&To={4}", ApiUrl, _token, reportType,
 				dateFrom, dateTo );
 
-			var response = HttpClientHelper.GetResponse( requestUrl );
+			var response = _httpClient.GetResponse( requestUrl );
 
 			int error;
 			var hasError = int.TryParse( response, out error );
@@ -272,7 +281,7 @@ namespace FastSms {
 				var requestUrl = string.Format( "{0}{1}&Action=ImportContactsCSV&ContactsCSV={2},{3},{4}{5}&IgnoreDupes={6}&OverwriteDupes={7}&OverwriteDupes={8}",
 					ApiUrl, _token, contact.Name, contact.Number, contact.Email, urlForGroups, ignoreDupes ? 1 : 0, overwriteDupesOne ? 1 : 0, overwriteDupesTwo ? 1 : 0 );
 
-				var response = HttpClientHelper.GetResponse( requestUrl );
+				var response = _httpClient.GetResponse( requestUrl );
 
 				int error;
 				var hasError = int.TryParse( response, out error );
@@ -302,7 +311,7 @@ namespace FastSms {
         {
             var requestUrl = string.Format("{0}{1}&Action=GetBGMessages&BGSendID={2}", ApiUrl, _token, bgSendId);
 
-            var response = HttpClientHelper.GetResponse(requestUrl);
+            var response = _httpClient.GetResponse(requestUrl);
 
             try
             {

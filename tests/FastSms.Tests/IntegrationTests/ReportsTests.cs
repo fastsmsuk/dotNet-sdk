@@ -1,24 +1,22 @@
-﻿using FastSms.Common;
-using FastSms.Enums;
+﻿using FastSms.Enums;
 using FastSms.Exceptions;
-using FastSms.Models;
 using FastSms.Models.Responses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace FastSms.Tests {
+namespace FastSms.Tests.IntegrationTests {
 	[TestClass]
 	public class ReportsTests {
-		public Client Client;
+		public FastSmsClient Client;
 
 		[TestInitialize]
 		public void TestInitialize () {
-			Client = new Client();
+			Client = new FastSmsClient();
 		}
 
 		[TestMethod]
 		[ExpectedException ( typeof ( ApiException ) )]
 		public void CheckGetReportsBadToken () {
-			var client = new Client( "Token" );
+			var client = new FastSmsClient( "Token" );
 			client.GetReports( ReportType.Messages, "20151025000000", "20151027000000" );
 		}
 

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace FastSms.Common {
+namespace FastSms {
 	public static class Errors {
-		public static readonly Dictionary<string, string> ErrorList = new Dictionary<string, string> {
+		public static readonly IDictionary<string, string> ErrorList = new Dictionary<string, string> {
 			{"-100", "Not Enough Credits"},
 			{"-101", "Invalid CreditID"},
 			{"-200", "Invalid Contact"},

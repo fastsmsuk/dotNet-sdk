@@ -52,23 +52,26 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="CreditsTests.cs" />
-    <Compile Include="CheckMessageStatusTests.cs" />
-    <Compile Include="UserTests.cs" />
-    <Compile Include="DeleteAndEmptyTests.cs" />
-    <Compile Include="ReportsTests.cs" />
-    <Compile Include="ContactsTests.cs" />
-    <Compile Include="SendMessageTests.cs" />
+    <Compile Include="IntegrationTests\CreditsTests.cs" />
+    <Compile Include="IntegrationTests\CheckMessageStatusTests.cs" />
+    <Compile Include="IntegrationTests\UserTests.cs" />
+    <Compile Include="IntegrationTests\DeleteAndEmptyTests.cs" />
+    <Compile Include="IntegrationTests\ReportsTests.cs" />
+    <Compile Include="IntegrationTests\ContactsTests.cs" />
+    <Compile Include="IntegrationTests\SendMessageTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FastSms\FastSms.csproj">
+    <ProjectReference Include="..\..\src\FastSms\FastSms.csproj">
       <Project>{7f9ec519-d06c-48f0-983a-03ef2fc310c0}</Project>
       <Name>FastSms</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UnitTests\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
