@@ -13,42 +13,48 @@ namespace FastSms.Tests.IntegrationTests {
 			Client = new FastSmsClient();
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckDeleteAllContactsBadToken () {
 			Client = new FastSmsClient( "Token" );
 			Client.DeleteAllContacts();
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckDeleteAllGroupsBadToken () {
 			Client = new FastSmsClient( "Token" );
 			Client.DeleteAllGroups();
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckDeleteGroupBadToken () {
 			Client = new FastSmsClient( "Token" );
 			Client.DeleteGroup( "group1" );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckDeleteGroupBadName () {
 			Client.DeleteGroup( "somegroup" );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckEmptyGroupBadToken () {
 			Client = new FastSmsClient( "Token" );
 			Client.EmptyGroup( "group1" );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckEmptyGroupBadName () {
 			Client.EmptyGroup( "somegroup" );
 		}

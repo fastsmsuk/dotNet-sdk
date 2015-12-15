@@ -13,32 +13,37 @@ namespace FastSms.Tests.IntegrationTests {
 			Client = new FastSmsClient();
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckCreditsBadToken () {
 			Client = new FastSmsClient( "Token" );
 			Client.CheckCredits();
 		}
 
-		[TestMethod]
+        [TestMethod]
+        [TestCategory("Integration")]
 		public void CheckCreditsNotNull () {
 			Assert.IsNotNull( Client.CheckCredits() );
 		}
 
-		[TestMethod]
+        [TestMethod]
+        [TestCategory("Integration")]
 		public void CheckCreditsReturnGraterZero () {
 			Assert.IsTrue( Client.CheckCredits() > 0 );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckUpdateCreditsBadToken () {
 			Client = new FastSmsClient( "Token" );
 			Client.UpdateCredits( "NameZ1111", 23 );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckUpdateCreditsBadName () {
 			Client.UpdateCredits( "Someone", 23 );
 		}

@@ -117,8 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AlphanumericTooLong" xml:space="preserve">
+    <value>Invalid Source Address – Alphanumeric too long</value>
+  </data>
+  <data name="BlankBody" xml:space="preserve">
+    <value>Blank Body</value>
+  </data>
+  <data name="BlankMessageBody" xml:space="preserve">
+    <value>BlankMessageBody</value>
+  </data>
+  <data name="BlankOrInvalidSourceAddress" xml:space="preserve">
+    <value>Blank or Invalid Source Address</value>
+  </data>
+  <data name="DistributionListIsEmpty" xml:space="preserve">
+    <value>Distribution List is Empty</value>
+  </data>
+  <data name="ErrorCreatingUser" xml:space="preserve">
+    <value>Error Creating User</value>
+  </data>
   <data name="GeneralDatabaseError" xml:space="preserve">
     <value>General Database Error</value>
+  </data>
+  <data name="GroupIsEmpty" xml:space="preserve">
+    <value>Group is Empty</value>
+  </data>
+  <data name="InvalidAmountSpecified" xml:space="preserve">
+    <value>Invalid Amount Specified</value>
   </data>
   <data name="InvalidContact" xml:space="preserve">
     <value>Invalid Contact</value>
@@ -126,8 +150,59 @@
   <data name="InvalidCreditId" xml:space="preserve">
     <value>Invalid CreditID</value>
   </data>
+  <data name="InvalidCurrencyRequested" xml:space="preserve">
+    <value>Invalid Currency Requested</value>
+  </data>
+  <data name="InvalidDestinationAddress" xml:space="preserve">
+    <value>Invalid Destination Address</value>
+  </data>
+  <data name="InvalidDistributionList" xml:space="preserve">
+    <value>Invalid Distribution List</value>
+  </data>
+  <data name="InvalidFromTimestamp" xml:space="preserve">
+    <value>Invalid From Timestamp</value>
+  </data>
+  <data name="InvalidGroup" xml:space="preserve">
+    <value>Invalid Group</value>
+  </data>
+  <data name="InvalidMissingDetails" xml:space="preserve">
+    <value>Invalid/Missing Details</value>
+  </data>
+  <data name="InvalidNumber" xml:space="preserve">
+    <value>Invalid Source Address – Invalid Number</value>
+  </data>
+  <data name="InvalidScheduleDate" xml:space="preserve">
+    <value>Invalid Schedule Date</value>
+  </data>
+  <data name="InvalidToTimestamp" xml:space="preserve">
+    <value>Invalid To Timestamp</value>
+  </data>
+  <data name="InvalidValidityPeriod" xml:space="preserve">
+    <value>Invalid Validity Period</value>
+  </data>
+  <data name="IsDownForMaintenance" xml:space="preserve">
+    <value>The system is down for maintenance</value>
+  </data>
+  <data name="LicenseExpired" xml:space="preserve">
+    <value>License expired</value>
+  </data>
+  <data name="LicenseInUse" xml:space="preserve">
+    <value>License in use</value>
+  </data>
+  <data name="NoLicenseAvailable" xml:space="preserve">
+    <value>No License available</value>
+  </data>
+  <data name="NoRouteAvailable" xml:space="preserve">
+    <value>No Route Available</value>
+  </data>
   <data name="NotEnoughCredits" xml:space="preserve">
     <value>Not Enough Credits</value>
+  </data>
+  <data name="NoUserIDSpecified" xml:space="preserve">
+    <value>NoUserIDSpecified</value>
+  </data>
+  <data name="NumberIsBlacklisted" xml:space="preserve">
+    <value>Number is blacklisted</value>
   </data>
   <data name="ReceivedXmlError" xml:space="preserve">
     <value>Received XML Error</value>
@@ -135,7 +210,46 @@
   <data name="ReturnXmlError" xml:space="preserve">
     <value>Return XML Error</value>
   </data>
+  <data name="SingleNumber" xml:space="preserve">
+    <value>You have exceeded the limit of messages you can send in a single day to a single number</value>
+  </data>
+  <data name="SomeNumbersInListFailed" xml:space="preserve">
+    <value>Some numbers in list failed</value>
+  </data>
+  <data name="SourceAddressNotAllowed" xml:space="preserve">
+    <value>Source Address Not Allowed (Email2SMS)</value>
+  </data>
+  <data name="UnableToCreateList" xml:space="preserve">
+    <value>Unable to create List</value>
+  </data>
+  <data name="UnknownAction" xml:space="preserve">
+    <value>Unknown Action</value>
+  </data>
   <data name="UnknownError" xml:space="preserve">
     <value>Unknown Error</value>
+  </data>
+  <data name="UnknownGroup" xml:space="preserve">
+    <value>Unknown Group</value>
+  </data>
+  <data name="UnknownInvalidUser" xml:space="preserve">
+    <value>Unknown/Invalid User</value>
+  </data>
+  <data name="UnknownList" xml:space="preserve">
+    <value>Unknown List</value>
+  </data>
+  <data name="UnknownMessageID" xml:space="preserve">
+    <value>Unknown Message ID</value>
+  </data>
+  <data name="UnknownReportType" xml:space="preserve">
+    <value>Unknown Report Type</value>
+  </data>
+  <data name="UnknownUsernamePassword" xml:space="preserve">
+    <value>Unknown Username/Password</value>
+  </data>
+  <data name="UsersCredits" xml:space="preserve">
+    <value>You cannot set a user’s credits to be less than 0</value>
+  </data>
+  <data name="UserSuspended" xml:space="preserve">
+    <value>User Suspended</value>
   </data>
 </root>

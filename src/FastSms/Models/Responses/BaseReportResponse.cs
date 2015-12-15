@@ -1,5 +1,4 @@
-﻿using FastSms.Common;
-using FastSms.Enums;
+﻿using FastSms.Enums;
 
 namespace FastSms.Models.Responses {
     /// <summary>

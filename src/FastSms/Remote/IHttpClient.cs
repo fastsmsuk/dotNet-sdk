@@ -1,6 +1,6 @@
 ﻿namespace FastSms.Remote
 {
-    internal interface IHttpClient
+    public interface IHttpClient
     {
         string GetResponse(string url, bool isPost = true);
     }

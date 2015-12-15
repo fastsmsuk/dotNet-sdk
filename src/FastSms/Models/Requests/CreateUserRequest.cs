@@ -3,6 +3,37 @@
     ///    Request format for Action=CreateUser
     /// </summary>
     public class CreateUserRequest {
+
+        public CreateUserRequest(){}
+
+        public CreateUserRequest(string childUsername, string childPassword, string accessLevel, string firstName, string lastName,
+            string email, string telephone, double credits, int creditReminder, int alert)
+        {
+            ChildUsername = childUsername;
+            ChildPassword = childPassword;
+            AccessLevel = accessLevel;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Telephone = telephone;
+            Credits = credits;
+            CreditReminder = creditReminder;
+            Alert = alert;
+        }
+
+        public CreateUserRequest(string userName, string telephone)
+        {
+            ChildUsername = userName;
+            ChildPassword = string.Empty;
+            AccessLevel = string.Empty;
+            FirstName = string.Empty;
+            LastName = string.Empty;
+            Email = string.Empty;
+            Telephone = telephone;
+            Credits = 0;
+            CreditReminder = 0;
+            Alert = 0;
+        }
         /// <summary>
         ///    The username of the user you wish to create.
         /// </summary>

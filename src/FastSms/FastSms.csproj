@@ -43,12 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FastSmsClient.cs" />
-    <Compile Include="Errors.cs" />
-    <Compile Include="Common\HttpClientHelper.cs" />
+    <Compile Include="FastSmsErrors.cs" />
+    <Compile Include="IFastSmsClient.cs" />
+    <Compile Include="Remote\HttpClient.cs" />
+    <Compile Include="Remote\IHttpClient.cs" />
     <Compile Include="ReportParser.cs" />
     <Compile Include="Enums\ReportType.cs" />
-    <Compile Include="Exceptions\ApiException.cs" />
-    <Compile Include="Common\StringExtensions.cs" />
+    <Compile Include="Exceptions\FastSmsException.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Localization\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

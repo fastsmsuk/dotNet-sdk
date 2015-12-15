@@ -65,45 +65,53 @@ namespace FastSms.Tests.IntegrationTests {
 			ImportContactsCsvResults = Client.ImportContactsCsv( ContactModelList );
 		}
 
-		[TestMethod]
+        [TestMethod]
+        [TestCategory("Integration")]
 		public void CheckImportContactsCsvSuccess () {
 			Assert.AreEqual( "Success", ImportContactsCsvResults[0].Status, "Status must be Success" );
 		}
 
-		[TestMethod]
+        [TestMethod]
+        [TestCategory("Integration")]
 		public void CheckImportContactsCsvNoName () {
 			Assert.AreEqual( "Failed", ImportContactsCsvResults[2].Status, "Status must be Failed" );
 		}
 
-		[TestMethod]
+        [TestMethod]
+        [TestCategory("Integration")]
 		public void CheckImportContactsCsvNoNumber () {
 			Assert.AreEqual( "Failed", ImportContactsCsvResults[3].Status, "Status must be Failed" );
 		}
 
-		[TestMethod]
+        [TestMethod]
+        [TestCategory("Integration")]
 		public void CheckImportContactsCsvDuplicateName () {
 			Assert.AreEqual( "DuplicateName", ImportContactsCsvResults[6].Status, "Status must be DuplicateName" );
 		}
 
-		[TestMethod]
+        [TestMethod]
+        [TestCategory("Integration")]
 		public void CheckImportContactsCsvDuplicateNumber () {
 			Assert.AreEqual( "DuplicateNumber", ImportContactsCsvResults[7].Status, "Status must be DuplicateName" );
 		}
 
-		[TestMethod]
+        [TestMethod]
+        [TestCategory("Integration")]
 		public void CheckImportContactsCsvWithIgnoreDupes () {
 			Client.DeleteAllContacts();
 			ImportContactsCsvResults = Client.ImportContactsCsv( ContactModelList, true );
 			Assert.AreEqual( "Success", ImportContactsCsvResults[6].Status, "Status must be Success" );
 		}
 
-		[TestMethod]
+        [TestMethod]
+        [TestCategory("Integration")]
 		public void CheckImportContactsCsvBadNumber () {
 			Assert.AreEqual( "Failed", ImportContactsCsvResults[4].Status, "Status must be Failed" );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckImportContactsCsvBadToken () {
 			var newClient = new FastSmsClient( "Token" );
 			newClient.ImportContactsCsv( ContactModelList );

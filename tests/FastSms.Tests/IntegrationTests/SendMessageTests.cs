@@ -12,15 +12,17 @@ namespace FastSms.Tests.IntegrationTests {
 			Client = new FastSmsClient();
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckSendMessageToGroupBadToken () {
 			var client = new FastSmsClient( "bad token" );
 			client.SendMessage( new MessageToGroupRequest() );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckSendMessageToGroupBadModelState () {
 			var client = new FastSmsClient();
 			client.SendMessage( new MessageToGroupRequest {
@@ -30,15 +32,17 @@ namespace FastSms.Tests.IntegrationTests {
 			} );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckSendMessageToListBadToken () {
 			var client = new FastSmsClient( "bad token" );
 			client.SendMessage( new SendMessageToListRequest() );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckSendMessageToListBadModelState () {
 			var client = new FastSmsClient();
 			client.SendMessage( new SendMessageToListRequest {
@@ -48,15 +52,17 @@ namespace FastSms.Tests.IntegrationTests {
 			} );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckSendMessageToUserBadToken () {
 			var client = new FastSmsClient( "bad token" );
 			client.SendMessage( new SendMessageToUserRequest() );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckSendMessageToUserBadModelState () {
 			var client = new FastSmsClient();
 			client.SendMessage( new SendMessageToUserRequest {

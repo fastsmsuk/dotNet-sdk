@@ -9,14 +9,14 @@ using FastSms.Models.Responses;
 using FastSms.Remote;
 
 namespace FastSms {
-	public class FastSmsClient {
+	public class FastSmsClient : IFastSmsClient {
         public const string ApiUrl = "https://my.fastsms.co.uk/api?Token=";
 
         private readonly string _token;
 	    private readonly IHttpClient _httpClient;
 
 		public FastSmsClient () {
-			_token = ConfigurationManager.AppSettings["Token"];
+			_token = ConfigurationManager.AppSettings["FastSmsToken"];
             _httpClient = new HttpClient();
 		}
 
@@ -25,7 +25,7 @@ namespace FastSms {
             _httpClient = new HttpClient();
         }
 
-        internal FastSmsClient(string token, IHttpClient httpClient)
+        public FastSmsClient(string token, IHttpClient httpClient)
         {
             _token = token;
             _httpClient = httpClient;
@@ -43,7 +43,7 @@ namespace FastSms {
 
 			var credits = response.AsDecimalSafe();
 			if (credits <= 0m ) {
-				throw new ApiException( response );
+				throw new FastSmsException( response );
 			}
 			return credits ?? 0m;
 		}
@@ -58,8 +58,8 @@ namespace FastSms {
 
 			var messageStatus = _httpClient.GetResponse( requestUrl );
 
-			if ( Errors.ErrorList.Keys.Contains( messageStatus ) ) {
-				throw new ApiException( messageStatus );
+			if ( FastSmsErrors.Errors.Keys.Contains( messageStatus ) ) {
+				throw new FastSmsException( messageStatus );
 			}
 
 			return messageStatus;
@@ -76,7 +76,7 @@ namespace FastSms {
 			var result = _httpClient.GetResponse( requestUrl );
 
 			if ( result.AsIntSafe() != 1 ) {
-				throw new ApiException( result );
+				throw new FastSmsException( result );
 			}
 		}
 
@@ -89,7 +89,7 @@ namespace FastSms {
 			var result = _httpClient.GetResponse( requestUrl );
 
 			if ( result.AsIntSafe() != 1 ) {
-				throw new ApiException( result );
+				throw new FastSmsException( result );
 			}
 		}
 
@@ -102,7 +102,7 @@ namespace FastSms {
 			var result = _httpClient.GetResponse( requestUrl );
 
 			if ( result.AsIntSafe() != 1 ) {
-				throw new ApiException( result );
+				throw new FastSmsException( result );
 			}
 		}
 
@@ -116,7 +116,7 @@ namespace FastSms {
 			var result = _httpClient.GetResponse( requestUrl );
 
 			if ( result.AsIntSafe() != 1 ) {
-				throw new ApiException( result );
+				throw new FastSmsException( result );
 			}
 		}
 
@@ -130,7 +130,7 @@ namespace FastSms {
 			var result = _httpClient.GetResponse( requestUrl );
 
 			if ( result.AsIntSafe() != 1 ) {
-				throw new ApiException( result );
+				throw new FastSmsException( result );
 			}
 		}
 
@@ -147,7 +147,7 @@ namespace FastSms {
 			var result = _httpClient.GetResponse( requestUrl );
 
 			if ( result.AsIntSafe() != 1 ) {
-				throw new ApiException( result );
+				throw new FastSmsException( result );
 			}
 		}
 
@@ -166,8 +166,8 @@ namespace FastSms {
 
 			var messageId = _httpClient.GetResponse( requestUrl );
 
-			if ( Errors.ErrorList.Keys.Contains( messageId ) ) {
-				throw new ApiException( messageId );
+			if ( FastSmsErrors.Errors.Keys.Contains( messageId ) ) {
+				throw new FastSmsException( messageId );
 			}
 
 			return messageId;
@@ -187,7 +187,7 @@ namespace FastSms {
 			var result = _httpClient.GetResponse( requestUrl );
 
 			if ( result.AsIntSafe() < 1 ) {
-				throw new ApiException( result );
+				throw new FastSmsException( result );
 			}
 		}
 
@@ -205,7 +205,7 @@ namespace FastSms {
 			var result = _httpClient.GetResponse( requestUrl );
 
 			if ( result.AsIntSafe() < 1 ) {
-				throw new ApiException( result );
+				throw new FastSmsException( result );
 			}
 		}
 
@@ -226,7 +226,7 @@ namespace FastSms {
 			var hasError = int.TryParse( response, out error );
 
 			if ( hasError && error < 1 ) {
-				throw new ApiException( response );
+				throw new FastSmsException( response );
 			}
 
 			List<BaseReportResponse> report;
@@ -249,7 +249,7 @@ namespace FastSms {
 					break;
 				}
 				default:
-					throw new ApiException( response );
+					throw new FastSmsException( response );
 			}
 			return report;
 		}
@@ -286,7 +286,7 @@ namespace FastSms {
 				int error;
 				var hasError = int.TryParse( response, out error );
 				if ( hasError && error < 1 ) {
-					throw new ApiException( response );
+					throw new FastSmsException( response );
 				}
 
 				var resultStatus = response.Split( '\n' )[0].Split( ':' )[1].Replace( "\n", string.Empty ).Replace( " ", string.Empty );
@@ -307,24 +307,24 @@ namespace FastSms {
         /// </summary>
         /// <param name="bgSendId">ID of the send you want to retrieve messages for</param>
         /// <returns>List of background messages.</returns>
-        public List<MessageResponse> GetBgMessages(string bgSendId)
-        {
-            var requestUrl = string.Format("{0}{1}&Action=GetBGMessages&BGSendID={2}", ApiUrl, _token, bgSendId);
+        //public List<MessageResponse> GetBgMessages(string bgSendId)
+        //{
+        //    var requestUrl = string.Format("{0}{1}&Action=GetBGMessages&BGSendID={2}", ApiUrl, _token, bgSendId);
 
-            var response = _httpClient.GetResponse(requestUrl);
+        //    var response = _httpClient.GetResponse(requestUrl);
 
-            try
-            {
-                //var lisOfMessages = JsonConvert.DeserializeObject<List<MessageResponse>>(response);
-                //return lisOfMessages;
-            }
-            catch (Exception)
-            {
-                //var error = JsonConvert.DeserializeObject<ErrorMessageResponse>(response);
-                //throw new ApiException(error.Number);
-            }
+        //    try
+        //    {
+        //        //var lisOfMessages = JsonConvert.DeserializeObject<List<MessageResponse>>(response);
+        //        //return lisOfMessages;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        //var error = JsonConvert.DeserializeObject<ErrorMessageResponse>(response);
+        //        //throw new ApiException(error.Number);
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
     }
 }

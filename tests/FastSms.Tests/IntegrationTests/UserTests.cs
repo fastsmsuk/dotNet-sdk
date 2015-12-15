@@ -22,57 +22,65 @@ namespace FastSms.Tests.IntegrationTests {
 			};
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckCreateUserBadToken () {
 			Client = new FastSmsClient( "Token" );
 			Client.CreateUser( UserModel );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckCreateUserBadName () {
 			UserModel.FirstName = "";
 			Client.CreateUser( UserModel );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckCreateUserBadLastName () {
 			UserModel.LastName = "";
 			Client.CreateUser( UserModel );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckCreateUserBadAccess () {
 			UserModel.FirstName = "AccessLevel";
 			Client.CreateUser( UserModel );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckCreateUserBadUsername () {
 			UserModel.ChildUsername = "";
 			Client.CreateUser( UserModel );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckCreateUserBadPassword () {
 			UserModel.ChildPassword = "";
 			Client.CreateUser( UserModel );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckCreateUserBadEmail () {
 			UserModel.Email = "";
 			Client.CreateUser( UserModel );
 		}
 
-		[TestMethod]
-		[ExpectedException ( typeof ( ApiException ) )]
+        [TestMethod]
+        [TestCategory("Integration")]
+		[ExpectedException ( typeof ( FastSmsException ) )]
 		public void CheckCreateUserBadCredits () {
 			UserModel.Credits = -1;
 			Client.CreateUser( UserModel );

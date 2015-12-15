@@ -1,13 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastSms", "FastSms\FastSms.csproj", "{7F9EC519-D06C-48F0-983A-03EF2FC310C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastSms.Tests", "..\tests\FastSms.Tests\FastSms.Tests.csproj", "{6CA39510-1BD0-4896-BD09-929882297CB9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "..\examples\TestApp\TestApp.csproj", "{2F217347-F2C5-43A9-BF6D-BC081037F026}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +19,6 @@ Global
 		{6CA39510-1BD0-4896-BD09-929882297CB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CA39510-1BD0-4896-BD09-929882297CB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CA39510-1BD0-4896-BD09-929882297CB9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F217347-F2C5-43A9-BF6D-BC081037F026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F217347-F2C5-43A9-BF6D-BC081037F026}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F217347-F2C5-43A9-BF6D-BC081037F026}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F217347-F2C5-43A9-BF6D-BC081037F026}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
