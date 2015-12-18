@@ -1,0 +1,29 @@
+version: 1.0.{build}
+build:
+  publish_nuget: true
+  publish_nuget_symbols: true
+  include_nuget_references: true
+  verbosity: minimal
+after_build:
+- nuget pack src\FastSms\FastSms.csproj  -Version "%APPVEYOR_BUILD_VERSION%"
+
+test:
+  categories:
+    only:
+    - Unit
+
+artifacts:
+- path: '*.nupkg'
+  name: FastSmsSDK
+install:
+  - nuget restore src\FastSms.sln
+  - nuget install Moq -Version 4.1.1309.1617 -OutputDirectory tests\FastSms.Tests
+
+deploy:
+  provider: NuGet
+  api_key: c7386e8e-a0f5-43d0-9c71-313cf48b80be
+  artifact: FastSmsSDK
+  on:
+    branch: master
+  
+  
