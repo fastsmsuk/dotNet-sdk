@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
 using FastSms.Enums;
 using FastSms.Exceptions;
@@ -10,7 +9,7 @@ using FastSms.Remote;
 
 namespace FastSms {
 	public class FastSmsClient : IFastSmsClient {
-        public const string ApiUrl = "https://my.fastsms.co.uk/api?Token=";
+        private const string ApiUrl = "https://my.fastsms.co.uk/api?Token=";
 
         private readonly string _token;
 	    private readonly IHttpClient _httpClient;

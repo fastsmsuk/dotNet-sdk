@@ -14,7 +14,7 @@ test:
 
 artifacts:
 - path: '*.nupkg'
-  name: TestAppVeyor
+  name: FastSmsSDK
 install:
   - nuget restore src\FastSms.sln
   - nuget install Moq -Version 4.1.1309.1617 -OutputDirectory tests\FastSms.Tests
@@ -22,7 +22,7 @@ install:
 deploy:
   provider: NuGet
   api_key: c7386e8e-a0f5-43d0-9c71-313cf48b80be
-  artifact: TestAppVeyor
+  artifact: FastSmsSDK
   on:
     branch: master
   
