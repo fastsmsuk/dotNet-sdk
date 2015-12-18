@@ -40,7 +40,7 @@ Your token (found in your
 [settings](<https://my.fastsms.co.uk/account/settings>) within NetMessenger)
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-var fastSmsClient = new FastSmsClient('your token');
+var client = new FastSmsClient('your token');
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Wrap errors
@@ -52,7 +52,7 @@ List all API codes found in
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 using FastSms;
 ...
-var fastSmsClient = new FastSmsClient('Your token');
+var client = new FastSmsClient('Your token');
 try {
     var credits = client.CheckCredits();
 } catch (FastSmsException fastSmsException) {
