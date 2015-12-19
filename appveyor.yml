@@ -6,7 +6,7 @@ build:
   include_nuget_references: true
   verbosity: minimal
 after_build:
-- nuget pack src\FastSms\FastSms.csproj  -Version "%APPVEYOR_BUILD_VERSION%"
+- nuget pack src\FastSms\FastSms.csproj
 
 test:
   categories:
@@ -14,7 +14,7 @@ test:
     - Unit
 
 artifacts:
-- path: '*.nupkg'
+- path: 'FastSms.nupkg'
   name: FastSmsSDK
 install:
   - nuget restore src\FastSms.sln
