@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Net;
 
-namespace FastSms.Remote
+namespace FastSmsSdk.Remote
 {
     internal class HttpClient : IHttpClient
     {

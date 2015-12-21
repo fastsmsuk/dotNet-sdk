@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace FastSms.Exceptions {
+namespace FastSmsSdk.Exceptions {
 	/// <summary>
 	///    API Exception.
 	/// </summary>

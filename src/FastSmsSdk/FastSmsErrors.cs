@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using FastSms.Localization;
+using FastSmsSdk.Localization;
 
-namespace FastSms {
+namespace FastSmsSdk {
 	public static class FastSmsErrors {
 		public static readonly IDictionary<string, string> Errors = new Dictionary<string, string> {
 			{"-100", Resources.NotEnoughCredits},

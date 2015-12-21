@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using System.Net;
-using FastSms.Remote;
+using FastSmsSdk.Remote;
 
 namespace FastSms.Tests.Helpers
 {

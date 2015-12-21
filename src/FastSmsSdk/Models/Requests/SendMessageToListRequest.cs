@@ -1,4 +1,4 @@
-﻿namespace FastSms.Models.Requests {
+﻿namespace FastSmsSdk.Models.Requests {
 	/// <summary>
 	///    Message to list model.
 	/// </summary>

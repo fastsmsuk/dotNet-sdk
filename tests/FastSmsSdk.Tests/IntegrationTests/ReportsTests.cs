@@ -1,6 +1,7 @@
-﻿using FastSms.Enums;
-using FastSms.Exceptions;
-using FastSms.Models.Responses;
+﻿using FastSmsSdk;
+using FastSmsSdk.Enums;
+using FastSmsSdk.Exceptions;
+using FastSmsSdk.Models.Responses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FastSms.Tests.IntegrationTests {

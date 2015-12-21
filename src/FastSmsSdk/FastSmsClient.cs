@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Configuration;
-using FastSms.Enums;
-using FastSms.Exceptions;
-using FastSms.Extensions;
-using FastSms.Models.Requests;
-using FastSms.Models.Responses;
-using FastSms.Remote;
+using FastSmsSdk.Enums;
+using FastSmsSdk.Exceptions;
+using FastSmsSdk.Extensions;
+using FastSmsSdk.Models.Requests;
+using FastSmsSdk.Models.Responses;
+using FastSmsSdk.Remote;
 
-namespace FastSms {
+namespace FastSmsSdk {
 	public class FastSmsClient : IFastSmsClient {
         private const string ApiUrl = "https://my.fastsms.co.uk/api?Token=";
 

@@ -1,4 +1,4 @@
-﻿namespace FastSms.Enums
+﻿namespace FastSmsSdk.Enums
 {
     public enum ReportType
     {

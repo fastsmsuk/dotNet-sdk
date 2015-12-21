@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using FastSms.Enums;
-using FastSms.Models.Requests;
-using FastSms.Models.Responses;
+using FastSmsSdk.Enums;
+using FastSmsSdk.Models.Requests;
+using FastSmsSdk.Models.Responses;
 
-namespace FastSms
+namespace FastSmsSdk
 {
     public interface IFastSmsClient
     {

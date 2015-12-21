@@ -1,6 +1,6 @@
-﻿using FastSms.Enums;
+﻿using FastSmsSdk.Enums;
 
-namespace FastSms.Models.Responses {
+namespace FastSmsSdk.Models.Responses {
     /// <summary>
     ///    Base model for reports
     /// </summary>

@@ -1,4 +1,4 @@
-﻿namespace FastSms.Models.Requests {
+﻿namespace FastSmsSdk.Models.Requests {
     /// <summary>
     ///    Sends a message. The message ID or error code will be returned in the content of the Page. 
     ///    If multiple numbers are submitted, then multiple IDs / error codes will be returned, separated by commas

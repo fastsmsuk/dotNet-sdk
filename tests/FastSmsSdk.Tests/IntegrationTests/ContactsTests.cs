@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using FastSms.Exceptions;
-using FastSms.Models.Requests;
-using FastSms.Models.Responses;
+using FastSmsSdk;
+using FastSmsSdk.Exceptions;
+using FastSmsSdk.Models.Requests;
+using FastSmsSdk.Models.Responses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FastSms.Tests.IntegrationTests {

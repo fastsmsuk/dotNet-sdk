@@ -1,4 +1,4 @@
-﻿namespace FastSms.Models.Responses {
+﻿namespace FastSmsSdk.Models.Responses {
 	/// <summary>
 	///    Inbound messages report model.
 	/// </summary>

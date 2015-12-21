@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using FastSms.Models.Responses;
+using FastSmsSdk.Models.Responses;
 
-namespace FastSms {
+namespace FastSmsSdk {
 	internal static class ReportParser {
 		/// <summary>
 		///    Gets inbound messages.

@@ -1,4 +1,5 @@
-﻿using FastSms.Exceptions;
+﻿using FastSmsSdk;
+using FastSmsSdk.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FastSms.Tests.IntegrationTests {

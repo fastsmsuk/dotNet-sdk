@@ -1,7 +1,8 @@
-﻿using FastSms.Enums;
-using FastSms.Exceptions;
-using FastSms.Models.Responses;
-using FastSms.Remote;
+﻿using FastSmsSdk;
+using FastSmsSdk.Enums;
+using FastSmsSdk.Exceptions;
+using FastSmsSdk.Models.Responses;
+using FastSmsSdk.Remote;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 

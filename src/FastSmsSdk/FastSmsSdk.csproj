@@ -7,8 +7,8 @@
     <ProjectGuid>{7F9EC519-D06C-48F0-983A-03EF2FC310C0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FastSms</RootNamespace>
-    <AssemblyName>FastSms</AssemblyName>
+    <RootNamespace>FastSmsSdk</RootNamespace>
+    <AssemblyName>FastSmsSdk</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

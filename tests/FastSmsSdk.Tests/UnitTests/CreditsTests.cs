@@ -1,5 +1,5 @@
-﻿using FastSms.Exceptions;
-using FastSms.Remote;
+﻿using FastSmsSdk;
+using FastSmsSdk.Remote;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 

@@ -1,4 +1,4 @@
-﻿namespace FastSms.Remote
+﻿namespace FastSmsSdk.Remote
 {
     public interface IHttpClient
     {
