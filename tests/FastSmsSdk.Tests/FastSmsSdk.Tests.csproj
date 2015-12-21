@@ -76,9 +76,9 @@
     <Compile Include="UnitTests\UserTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\FastSms\FastSms.csproj">
+    <ProjectReference Include="..\..\src\FastSmsSdk\FastSmsSdk.csproj">
       <Project>{7f9ec519-d06c-48f0-983a-03ef2fc310c0}</Project>
-      <Name>FastSms</Name>
+      <Name>FastSmsSdk</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

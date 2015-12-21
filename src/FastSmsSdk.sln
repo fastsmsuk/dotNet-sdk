@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastSms", "FastSms\FastSms.csproj", "{7F9EC519-D06C-48F0-983A-03EF2FC310C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastSmsSdk", "FastSmsSdk\FastSmsSdk.csproj", "{7F9EC519-D06C-48F0-983A-03EF2FC310C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastSms.Tests", "..\tests\FastSms.Tests\FastSms.Tests.csproj", "{6CA39510-1BD0-4896-BD09-929882297CB9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastSmsSdk.Tests", "..\tests\FastSmsSdk.Tests\FastSmsSdk.Tests.csproj", "{6CA39510-1BD0-4896-BD09-929882297CB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
