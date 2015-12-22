@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FastSms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FastSms.1.0.0.0\lib\net45\FastSms.dll</HintPath>
+    <Reference Include="FastSmsSdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastSmsSdk.1.0.12\lib\net45\FastSmsSdk.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

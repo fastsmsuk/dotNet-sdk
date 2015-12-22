@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
-using FastSms;
-using FastSms.Enums;
-using FastSms.Exceptions;
-using FastSms.Models.Requests;
-using FastSms.Models.Responses;
+using FastSmsSdk;
+using FastSmsSdk.Enums;
+using FastSmsSdk.Exceptions;
+using FastSmsSdk.Models.Requests;
+using FastSmsSdk.Models.Responses;
 
 namespace FastSmsExample
 {
