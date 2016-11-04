@@ -15,5 +15,10 @@ namespace FastSmsSdk.Extensions
             decimal result;
             return decimal.TryParse(text, NumberStyles.Any, CultureInfo.InvariantCulture, out result) ? result : (decimal?)null;
         }
+
+        public static string ReplaceForIndex(this string[] strings, int index)
+        {
+            return strings.Length > index ? strings[index].Replace("\"", string.Empty) : string.Empty;
+        }
     }
 }

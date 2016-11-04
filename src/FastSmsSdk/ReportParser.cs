@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using FastSmsSdk.Models.Responses;
+using FastSmsSdk.Extensions;
 
 namespace FastSmsSdk {
 	internal static class ReportParser {
@@ -17,14 +18,14 @@ namespace FastSmsSdk {
 				var inboundReport = new InboundMessagesReportResponse();
 				var currentList = responseList[index].Split( ',' );
 				if ( !string.IsNullOrEmpty( responseList[index] ) ) {
-					inboundReport.MessageId = currentList[0].Replace( "\"", string.Empty );
-					inboundReport.From = currentList[1].Replace( "\"", string.Empty );
-					inboundReport.Number = currentList[2].Replace( "\"", string.Empty );
-					inboundReport.Message = currentList[3].Replace( "\"", string.Empty );
-					inboundReport.ReceivedDate = currentList[4].Replace( "\"", string.Empty );
-					inboundReport.Status = currentList[5].Replace( "\"", string.Empty );
+					inboundReport.MessageId = currentList.ReplaceForIndex(0);
+					inboundReport.From = currentList.ReplaceForIndex(1);
+                    inboundReport.Number = currentList.ReplaceForIndex(2);
+                    inboundReport.Message = currentList.ReplaceForIndex(3);
+                    inboundReport.ReceivedDate = currentList.ReplaceForIndex(4);
+                    inboundReport.Status = currentList.ReplaceForIndex(5);
 
-					reportResult.Add( inboundReport );
+                    reportResult.Add( inboundReport );
 				}
 			}
 			return reportResult;
@@ -44,10 +45,10 @@ namespace FastSmsSdk {
 				var usageReport = new UsageReportResponse();
 				var currentList = responseList[index].Split( ',' );
 				if ( !string.IsNullOrEmpty( responseList[index] ) ) {
-					usageReport.Status = currentList[0].Replace( "\"", string.Empty );
-					usageReport.Messages = currentList[1].Replace( "\"", string.Empty );
+					usageReport.Status = currentList.ReplaceForIndex(0);
+                    usageReport.Messages = currentList.ReplaceForIndex(1);
 
-					reportResult.Add( usageReport );
+                    reportResult.Add( usageReport );
 				}
 			}
 			return reportResult;
@@ -67,15 +68,15 @@ namespace FastSmsSdk {
 				var outboxReport = new OutboxReportResponse();
 				var currentList = responseList[index].Split( ',' );
 				if ( !string.IsNullOrEmpty( responseList[index] ) ) {
-					outboxReport.MessageId = currentList[0].Replace( "\"", string.Empty );
-					outboxReport.Username = currentList[1].Replace( "\"", string.Empty );
-					outboxReport.Destination = currentList[2].Replace( "\"", string.Empty );
-					outboxReport.Status = currentList[3].Replace( "\"", string.Empty );
-					outboxReport.ScheduleDate = currentList[4].Replace( "\"", string.Empty );
-					outboxReport.SentDate = currentList[5].Replace( "\"", string.Empty );
-					outboxReport.DeliveryDate = currentList[6].Replace( "\"", string.Empty );
+					outboxReport.MessageId = currentList.ReplaceForIndex(0);
+                    outboxReport.Username = currentList.ReplaceForIndex(1);
+                    outboxReport.Destination = currentList.ReplaceForIndex(2);
+                    outboxReport.Status = currentList.ReplaceForIndex(3);
+                    outboxReport.ScheduleDate = currentList.ReplaceForIndex(4);
+                    outboxReport.SentDate = currentList.ReplaceForIndex(5);
+                    outboxReport.DeliveryDate = currentList.ReplaceForIndex(6);
 
-					reportResult.Add( outboxReport );
+                    reportResult.Add( outboxReport );
 				}
 			}
 
@@ -96,15 +97,15 @@ namespace FastSmsSdk {
 				var messageReport = new MessageReportResponse();
 				var currentList = responseList[index].Split( ',' );
 				if ( !string.IsNullOrEmpty( responseList[index] ) ) {
-					messageReport.MessageId = currentList[0].Replace( "\"", string.Empty );
-					messageReport.Username = currentList[1].Replace( "\"", string.Empty );
-					messageReport.Destination = currentList[2].Replace( "\"", string.Empty );
-					messageReport.Source = currentList[3].Replace( "\"", string.Empty );
-					messageReport.Status = currentList[4].Replace( "\"", string.Empty );
-					messageReport.ScheduleDate = currentList[5].Replace( "\"", string.Empty );
-					messageReport.SentDate = currentList[6].Replace( "\"", string.Empty );
-					messageReport.DeliveryDate = currentList[7].Replace( "\"", string.Empty );
-					reportResult.Add( messageReport );
+					messageReport.MessageId = currentList.ReplaceForIndex(0);
+                    messageReport.Username = currentList.ReplaceForIndex(1);
+                    messageReport.Destination = currentList.ReplaceForIndex(2);
+                    messageReport.Source = currentList.ReplaceForIndex(3);
+                    messageReport.Status = currentList.ReplaceForIndex(4);
+                    messageReport.ScheduleDate = currentList.ReplaceForIndex(5);
+                    messageReport.SentDate = currentList.ReplaceForIndex(6);
+                    messageReport.DeliveryDate = currentList.ReplaceForIndex(7);
+                    reportResult.Add( messageReport );
 				}
 			}
 			return reportResult;

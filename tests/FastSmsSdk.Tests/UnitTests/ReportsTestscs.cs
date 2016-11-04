@@ -79,5 +79,47 @@ namespace FastSms.Tests.UnitTests
             Assert.IsTrue(result[0] is InboundMessagesReportResponse);
             Assert.AreEqual((result[0] as InboundMessagesReportResponse).MessageId, "55318001");
         }
+
+        //[TestMethod]
+        //[TestCategory("Unit")]
+        //public void getReports()
+        //{
+        //    var reportName = "InboundMessage";
+
+        //    var fromDate = "20131031111841";
+
+        //    var toDate = "20161101111843";
+
+        //    var client = new FastSmsClient("6Art-RoFX-VlBH-rggL");
+
+        //    var reportType = ReportType.Messages;
+        //    switch (reportName)
+        //    {
+        //        case "InboundMessages":
+        //            reportType = ReportType.InboundMessages;
+        //            break;
+        //        case "Messages":
+        //            reportType = ReportType.Messages;
+        //            break;
+        //        case "Outbox":
+        //            reportType = ReportType.Outbox;
+        //            break;
+        //        case "Usage":
+        //            reportType = ReportType.Usage;
+        //            break;
+        //    }
+        //    try
+        //    {
+        //        var reports = client.GetReports(reportType, fromDate, toDate);
+        //        //foreach (var report in reports)
+        //        //{
+        //        //    smsInboundMessageInsert(report);
+        //        //}
+        //    }
+        //    catch (FastSmsException exception)
+        //    {
+
+        //    }
+        //}
     }
 }
