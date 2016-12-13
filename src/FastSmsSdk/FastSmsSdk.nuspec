@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>FastSmsSdk</id>
-    <version>$version$</version>
+    <version>1.0.35</version>
     <title>FastSmsSdk</title>
     <authors>FastSmsUK</authors>
     <owners>FastSmsUK</owners>
