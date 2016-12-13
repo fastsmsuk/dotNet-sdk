@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7F9EC519-D06C-48F0-983A-03EF2FC310C0}</ProjectGuid>
+    <ProjectGuid>{0BB870EE-4491-4197-9A28-20F6512CD437}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FastSmsSdk</RootNamespace>

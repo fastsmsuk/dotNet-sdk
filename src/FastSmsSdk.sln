@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastSmsSdk", "FastSmsSdk\FastSmsSdk.csproj", "{7F9EC519-D06C-48F0-983A-03EF2FC310C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastSmsSdk.Tests", "..\tests\FastSmsSdk.Tests\FastSmsSdk.Tests.csproj", "{6CA39510-1BD0-4896-BD09-929882297CB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastSmsSdk.Net35", "FastSmsSdk\FastSmsSdk.Net35.csproj", "{B178A836-CE97-4DFF-B39B-B2C62866044B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastSmsSdk.Net4", "FastSmsSdk\FastSmsSdk.Net4.csproj", "{0BB870EE-4491-4197-9A28-20F6512CD437}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +25,14 @@ Global
 		{6CA39510-1BD0-4896-BD09-929882297CB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CA39510-1BD0-4896-BD09-929882297CB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CA39510-1BD0-4896-BD09-929882297CB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B178A836-CE97-4DFF-B39B-B2C62866044B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B178A836-CE97-4DFF-B39B-B2C62866044B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B178A836-CE97-4DFF-B39B-B2C62866044B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B178A836-CE97-4DFF-B39B-B2C62866044B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BB870EE-4491-4197-9A28-20F6512CD437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BB870EE-4491-4197-9A28-20F6512CD437}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BB870EE-4491-4197-9A28-20F6512CD437}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BB870EE-4491-4197-9A28-20F6512CD437}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
