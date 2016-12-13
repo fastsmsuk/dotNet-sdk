@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
+    <id>FastSmsSdk.Net4</id>
     <version>$version$</version>
     <title>FastSmsSdk.Net4</title>
     <authors>FastSmsUK</authors>
