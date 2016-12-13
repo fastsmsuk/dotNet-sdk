@@ -14,5 +14,10 @@
     <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
     <copyright>Copyright 2015</copyright>
     <tags>Tag1 Tag2</tags>
+	<dependencies>
+            <group targetFramework=".NETFramework4.5" />
+            <group targetFramework=".NETFramework4.0" />
+            <group targetFramework=".NETFramework3.5" />
+	</dependencies>
   </metadata>
 </package>
