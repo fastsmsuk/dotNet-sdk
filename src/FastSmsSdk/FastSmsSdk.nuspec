@@ -22,7 +22,7 @@
   </metadata>
 	<files>
 		<file src="bin\Debug\net35\FastSmsSdk.dll" target="lib\net35" />
-		<file src="bin\Debug\net40.FastSmsSdk.dll" target="lib\net40" />		
-		<file src="bin\Debug\net45.FastSmsSdk.dll" target="lib\net45" />
+		<file src="bin\Debug\net40\FastSmsSdk.dll" target="lib\net40" />		
+		<file src="bin\Debug\net45\FastSmsSdk.dll" target="lib\net45" />
 	</files>
 </package>
