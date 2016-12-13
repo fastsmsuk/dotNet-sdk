@@ -7,6 +7,8 @@ build:
   verbosity: minimal
 after_build:
 - nuget pack src\FastSmsSdk\FastSmsSdk.csproj  -Version "%APPVEYOR_BUILD_VERSION%"
+- nuget pack src\FastSmsSdk\FastSmsSdk.Net35.csproj  -Version "%APPVEYOR_BUILD_VERSION%"
+- nuget pack src\FastSmsSdk\FastSmsSdk.Net4.csproj  -Version "%APPVEYOR_BUILD_VERSION%"
 
 test:
   categories:
