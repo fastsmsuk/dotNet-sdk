@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FastSmsSdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FastSmsSdk.1.0.12\lib\net45\FastSmsSdk.dll</HintPath>
+      <HintPath>..\packages\FastSmsSdk.1.0.36\lib\net45\FastSmsSdk.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
