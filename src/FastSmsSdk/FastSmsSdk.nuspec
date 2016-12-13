@@ -13,11 +13,6 @@
     <description>.NET library to access FastSMS api</description>
     <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
     <copyright>Copyright 2015</copyright>
-	<files>
-		<file src="bin\Release\net35\FastSmsSdk.dll" target="lib\net35" />
-		<file src="bin\Release\net40.FastSmsSdk.dll" target="lib\net40" />		
-		<file src="bin\Release\net45.FastSmsSdk.dll" target="lib\net45" />
-	</files>
     <tags>Tag1 Tag2</tags>
 	<dependencies>
             <group targetFramework=".NETFramework4.5" />
@@ -25,4 +20,9 @@
             <group targetFramework=".NETFramework3.5" />
 	</dependencies>
   </metadata>
+	<files>
+		<file src="bin\Release\net35\FastSmsSdk.dll" target="lib\net35" />
+		<file src="bin\Release\net40.FastSmsSdk.dll" target="lib\net40" />		
+		<file src="bin\Release\net45.FastSmsSdk.dll" target="lib\net45" />
+	</files>
 </package>
