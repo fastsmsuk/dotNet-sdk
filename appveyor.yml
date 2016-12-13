@@ -6,7 +6,7 @@ build:
   include_nuget_references: true
   verbosity: minimal
 after_build:
-- nuget pack src\FastSmsSdk\*.csproj  -Version "%APPVEYOR_BUILD_VERSION%"
+- nuget pack src\FastSmsSdk\FastSmsSdk.csproj  -Version "%APPVEYOR_BUILD_VERSION%"
 
 test:
   categories:
